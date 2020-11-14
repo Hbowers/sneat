@@ -3,27 +3,32 @@ use amethyst::{
     ecs::{Join, ReadStorage, System, WriteStorage},
 };
 
-use crate::components::{Sneatling, Floor, Shape, Velocity};
+use crate::components::{Sneatling, Shape, Cover};
 
 pub struct CollisionSystem;
 
 impl<'s> System<'s> for CollisionSystem {
     type SystemData = (
-        WriteStorage<'s, Velocity>,
         ReadStorage<'s, Sneatling>,
-        ReadStorage<'s, Floor>,
+        ReadStorage<'s, Cover>
         ReadStorage<'s, Shape>,
         ReadStorage<'s, Transform>,
     );
 
-    fn run(&mut self, (mut velocities, sneatlings, floors, shapes, transforms): Self::SystemData) {
+    fn run(&mut self, (sneatlings, covers, shapes, transforms): Self::SystemData) {
 
-        for (_sneatling, sneatling_shape, sneatling_transform, sneatling_velocity) in (&sneatlings, &shapes, &transforms, &mut velocities).join() {
+        for (_sneatling, sneatling_shape, sneatling_transform) in (&sneatlings, &shapes, &transforms).join() {
             let sneatling_x = sneatling_transform.translation().x;
             let sneatling_y = sneatling_transform.translation().y;
 
+            for (_cover, cover_shape, cover_transform) in (&covers, &shapes, &transforms).join() {
+                let cover_x = cover_transform.translation().x - (cover_shape.width);
+                let cover_y = cover_transform.translation().y - (cover_shape.height);
+
+
+            }
+
             //Determine if a sneatling is currently in collision with a floor entity
-            let mut has_hit_floor = false;
             for (_floor, floor_shape, floor_transform) in (&floors, &shapes, &transforms).join() {
                 let floor_x = floor_transform.translation().x - (floor_shape.width * 0.5);
                 let floor_y = floor_transform.translation().y - (floor_shape.height * 0.5);
@@ -49,6 +54,8 @@ impl<'s> System<'s> for CollisionSystem {
     }
 }
 
-fn point_in_rect(x: f32, y: f32, left: f32, bottom: f32, right: f32, top: f32) -> bool {
+fn overlbp_percentage(xa1: f32, xa2: f32, ya1: f32, ya2: f32, xb1: f32, xb2: f32, yb1: f32, yb2: f32) -> bool {
     x >= left && x <= right && y >= bottom && y <= top
+    //TODO: https://stackoverflow.com/questions/9324339/how-much-do-two-rectangles-overlap
+
 }

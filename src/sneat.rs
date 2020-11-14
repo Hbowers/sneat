@@ -5,7 +5,14 @@ use amethyst::{
     renderer::{Camera, ImageFormat, SpriteRender, SpriteSheet, SpriteSheetFormat, Texture},
 };
 
-use crate::components::{Shape, Sneatling, Velocity, Floor};
+use crate::components::{
+    Shape,
+    Sneatling,
+    Velocity,
+    Floor,
+    Cover,
+    InCover
+};
 use crate::resources::assets;
 
 pub const ARENA_HEIGHT: f32 = 100.0;
@@ -28,7 +35,10 @@ impl SimpleState for Sneat {
         world.register::<Velocity>();
         world.register::<Floor>();
         world.register::<Shape>();
-        initialise_floor(world, environment_sprite_sheet_handle);
+        world.register::<Cover>();
+        world.register::<InCover>();
+        initialise_floor(world, environment_sprite_sheet_handle.clone());
+        initialise_cover(world, environment_sprite_sheet_handle);
         initialise_sneatling(world, sneatling_sprite_sheet_handle);
     }
 }
@@ -78,5 +88,20 @@ fn initialise_floor(world: &mut World, sprite_sheet_handle: Handle<SpriteSheet>)
         default_transform.prepend_translation_x(16.0);
         index += 1;
     }
+}
+
+fn initialise_cover(world: &mut World, sprite_sheet_handle: Handle<SpriteSheet>) {
+    let sprite_render = SpriteRender::new(sprite_sheet_handle, 0);
+    let mut default_transform = Transform::default();
+    let cover_coords = (ARENA_HEIGHT / 3.0) + 16.0;
+    default_transform.set_translation_xyz(cover_coords, cover_coords, -3.);
+
+    world
+        .create_entity()
+        .with(Cover::new())
+        .with(Shape::new(16.0, 16.0))
+        .with(default_transform.clone())
+        .with(sprite_render.clone())
+        .build();
 }
 
