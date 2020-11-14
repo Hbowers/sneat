@@ -11,7 +11,7 @@ pub use crate::components::Velocity;
 pub struct SneatlingMovementSystem;
 
 const SNEATLING_SPEED: f32 = 1.2;
-const SNEATLING_JUMP_HEIGHT: f32 = 1.2;
+const SNEATLING_JUMP_HEIGHT: f32 = 0.6;
 
 impl<'s> System<'s> for SneatlingMovementSystem {
     type SystemData = (
@@ -38,12 +38,12 @@ impl<'s> System<'s> for SneatlingMovementSystem {
                     if mv_amount != 0.0 {
                         let scaled_movement = SNEATLING_SPEED * mv_amount;
                         let new_velocity = velocity.x + scaled_movement;
-                        println!("scaled: {} \n new: {}", scaled_movement, new_velocity);
-                        velocity.x =
-                            match new_velocity.abs() > (SNEATLING_SPEED * scaled_movement).abs() {
-                                true => scaled_movement,
-                                false => new_velocity,
-                            };
+                        if new_velocity > 0.0 {
+                            velocity.x = new_velocity.min(SNEATLING_SPEED);
+                        }
+                        if new_velocity < 0.0 {
+                            velocity.x = new_velocity.max(-SNEATLING_SPEED);
+                        }
                     }
                 }
             }

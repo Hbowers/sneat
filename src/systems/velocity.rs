@@ -9,8 +9,9 @@ pub use crate::components::Velocity;
 #[derive(SystemDesc)]
 pub struct VelocitySystem;
 
-const X_AIR_DRAG: f32 = 0.7;
-const MAX_Y_SPEED: f32 = 1.2;
+const X_AIR_DRAG: f32 = 1.15;
+const X_DRAG: f32 = 9.;
+const MAX_Y_SPEED: f32 = 0.7;
 // FIXME: Change back to a meaningful value
 const GRAVITY: f32 = -1.;
 
@@ -40,15 +41,20 @@ impl<'s> System<'s> for VelocitySystem {
             /* Updating velocities */
             if !velocity.on_floor {
                 if velocity.x >= 0.0 {
-                    velocity.x = (velocity.x - time.delta_seconds() * X_AIR_DRAG).min(0.0);
+                    velocity.x = (velocity.x - time.delta_seconds() * X_AIR_DRAG).max(0.);
                 }
                 if velocity.x <= 0.0 {
-                    velocity.x = (velocity.x + time.delta_seconds() * X_AIR_DRAG).max(0.0);
+                    velocity.x = (velocity.x + time.delta_seconds() * X_AIR_DRAG).min(0.);
                 }
             }
             if velocity.on_floor {
-                velocity.x = 0.0;
                 velocity.y = 0.0;
+                if velocity.x >= 0.0 {
+                    velocity.x = (velocity.x - time.delta_seconds() * X_DRAG).max(0.);
+                }
+                if velocity.x <= 0.0 {
+                    velocity.x = (velocity.x + time.delta_seconds() * X_DRAG).min(0.);
+                }
             }
         }
     }
