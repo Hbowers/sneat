@@ -23,6 +23,9 @@ impl<'s> System<'s> for SneatlingMovementSystem {
     fn run(&mut self, (mut velocities, sneatlings, input): Self::SystemData) {
         for (_sneatling, velocity) in (&sneatlings, &mut velocities).join() {
             let movement = input.axis_value("player_1_walk");
+            if velocity.y != 0.0 {
+                return;
+            }
             if let Some(mv_amount) = movement {
                 if mv_amount != 0.0 {
                     let scaled_movement = SNEATLING_SPEED * mv_amount;
