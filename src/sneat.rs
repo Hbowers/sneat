@@ -7,8 +7,7 @@ use amethyst::{
 };
 
 
-use crate::components::Sneatling;
-use crate::components::Floor;
+use crate::components::{Sneatling, Velocity, Floor};
 
 pub const ARENA_HEIGHT: f32 = 100.0;
 pub const ARENA_WIDTH: f32 = 100.0;
@@ -48,6 +47,7 @@ fn initialise_sneatling(world: &mut World, sprite_sheet_handle: Handle<SpriteShe
     world
         .create_entity()
         .with(Sneatling::new())
+        .with(Velocity::new())
         .with(default_transform)
         .with(sprite_render)
         .build();

@@ -43,7 +43,8 @@ fn main() -> amethyst::Result<()> {
         .with_bundle(input_bundle)?
         .with_bundle(transform_bundle)?
         .with_bundle(render_bundle)?
-        .with(systems::SneatlingMovementSystem, "sneatling_system", &["input_system"]) // this goes (system, name for system, depends on systems)
+        .with(systems::SneatlingMovementSystem, "sneatling_system", &["input_system"])
+        .with(systems::VelocitySystem, "velocity_system", &["sneatling_system"])
         ;
 
     let assets_dir = app_root.join("assets");

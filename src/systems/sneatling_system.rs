@@ -6,27 +6,35 @@ use amethyst::{
 };
 
 pub use crate::components::Sneatling;
+pub use crate::components::Velocity;
 
 #[derive(SystemDesc)]
 pub struct SneatlingMovementSystem;
 
 const SNEATLING_SPEED: f32 = 1.2;
 
-impl<'s> System<'s> for SneatlingMovementSystem{
+impl<'s> System<'s> for SneatlingMovementSystem {
     type SystemData = (
-        WriteStorage<'s, Transform>,
+        WriteStorage<'s, Velocity>,
         ReadStorage<'s, Sneatling>,
         Read<'s, InputHandler<StringBindings>>,
     );
 
-    fn run(&mut self, (mut transforms, sneatlings, input): Self::SystemData){
-        for (_sneatling, transform) in (&sneatlings, &mut transforms).join(){
+    fn run(&mut self, (mut velocities, sneatlings, input): Self::SystemData) {
+        for (_sneatling, velocity) in (&sneatlings, &mut velocities).join() {
             let movement = input.axis_value("player_1_walk");
+            if velocity.y != 0.0 {
+                return;
+            }
             if let Some(mv_amount) = movement {
                 if mv_amount != 0.0 {
-                    println!("Player moving {}", mv_amount);
                     let scaled_movement = SNEATLING_SPEED * mv_amount;
-                    transform.prepend_translation_x(scaled_movement);
+                    let new_velocity = velocity.x + scaled_movement;
+                    println!("scaled: {} \n new: {}", scaled_movement, new_velocity);
+                    velocity.x = match new_velocity.abs() > (SNEATLING_SPEED * scaled_movement).abs() {
+                        true => scaled_movement,
+                        false =>  new_velocity,
+                    };
                 }
             }
         }
