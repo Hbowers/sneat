@@ -10,10 +10,14 @@ use amethyst::{
     utils::application_root_dir,
 };
 
-mod sneat;
-mod components;
+// Game
+pub mod sneat;
 
-use sneat::Sneat;
+// ECS
+pub mod components;
+pub mod systems;
+
+pub use sneat::Sneat;
 
 fn main() -> amethyst::Result<()> {
     amethyst::start_logger(Default::default());
@@ -38,7 +42,9 @@ fn main() -> amethyst::Result<()> {
     let game_data = GameDataBuilder::default()
         .with_bundle(input_bundle)?
         .with_bundle(transform_bundle)?
-        .with_bundle(render_bundle)?;
+        .with_bundle(render_bundle)?
+        .with(systems::SneatlingMovementSystem, "sneatling_system", &["input_system"]) // this goes (system, name for system, depends on systems)
+        ;
 
     let assets_dir = app_root.join("assets");
     let mut game = Application::new(assets_dir, Sneat, game_data)?;

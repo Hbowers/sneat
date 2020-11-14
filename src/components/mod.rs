@@ -1,3 +1,3 @@
 pub use self::sneatling::Sneatling;
 
-mod sneatling;
+pub mod sneatling;
