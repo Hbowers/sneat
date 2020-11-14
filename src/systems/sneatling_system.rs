@@ -1,7 +1,6 @@
 use amethyst::{
-    core::{SystemDesc, Transform},
     derive::SystemDesc,
-    ecs::{Join, Read, ReadStorage, System, SystemData, World, WriteStorage},
+    ecs::{Join, Read, ReadStorage, System, SystemData, WriteStorage},
     input::{InputHandler, StringBindings},
 };
 
@@ -34,11 +33,11 @@ impl<'s> System<'s> for SneatlingMovementSystem {
                 if mv_amount != 0.0 {
                     let scaled_movement = SNEATLING_SPEED * mv_amount;
                     let new_velocity = velocity.x + scaled_movement;
-                    println!("scaled: {} \n new: {}", scaled_movement, new_velocity);
-                    velocity.x = match new_velocity.abs() > (SNEATLING_SPEED * scaled_movement).abs() {
-                        true => scaled_movement,
-                        false =>  new_velocity,
-                    };
+                    velocity.x =
+                        match new_velocity.abs() > (SNEATLING_SPEED * scaled_movement).abs() {
+                            true => scaled_movement,
+                            false => new_velocity,
+                        };
                 }
             }
         }

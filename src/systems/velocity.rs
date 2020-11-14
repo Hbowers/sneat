@@ -1,8 +1,7 @@
 use amethyst::{
-    core::{SystemDesc, Transform, timing::Time},
+    core::{timing::Time, Transform},
     derive::SystemDesc,
-    ecs::{Join, Read, ReadStorage, System, SystemData, World, WriteStorage},
-    input::{InputHandler, StringBindings},
+    ecs::{Join, Read, System, SystemData, WriteStorage},
 };
 
 pub use crate::components::Velocity;
@@ -19,19 +18,17 @@ impl<'s> System<'s> for VelocitySystem {
     type SystemData = (
         WriteStorage<'s, Velocity>,
         WriteStorage<'s, Transform>,
-        Read<'s, Time>
+        Read<'s, Time>,
     );
 
     fn run(&mut self, (mut velocities, mut transforms, time): Self::SystemData) {
         for (mut velocity, transform) in (&mut velocities, &mut transforms).join() {
-
-             if velocity.y < MAX_Y_SPEED {
+            if velocity.y < MAX_Y_SPEED {
                 velocity.y = (velocity.y + GRAVITY * time.delta_seconds()).min(MAX_Y_SPEED);
-             }
+            }
 
             /* Updating transforms from velocities */
             if velocity.x != 0.0 {
-                println!("moving by {}", velocity.x);
                 transform.prepend_translation_x(velocity.x);
             };
             if velocity.y != 0.0 {
@@ -45,8 +42,6 @@ impl<'s> System<'s> for VelocitySystem {
             if velocity.x < 0.0 {
                 velocity.x = (velocity.x + time.delta_seconds() * X_DRAG).max(0.0);
             }
-
         }
     }
 }
-
