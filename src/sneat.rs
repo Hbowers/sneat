@@ -6,9 +6,8 @@ use amethyst::{
     renderer::{Camera, ImageFormat, SpriteRender, SpriteSheet, SpriteSheetFormat, Texture},
 };
 
-mod components;
 
-use components::Sneatling;
+use crate::components::Sneatling;
 
 pub const ARENA_HEIGHT: f32 = 100.0;
 pub const ARENA_WIDTH: f32 = 100.0;
@@ -36,9 +35,9 @@ fn initialise_camera(world: &mut World) {
         .build();
 }
 
-fn initialise_sneatling(world: &mut world, sprite_sheet_handle: Handle<SpriteSheet>) {
+fn initialise_sneatling(world: &mut World, sprite_sheet_handle: Handle<SpriteSheet>) {
     let sprite_render = SpriteRender::new(sprite_sheet_handle, 0);
-    let default_transform = Transform::default();
+    let mut default_transform = Transform::default();
     let center = ARENA_HEIGHT / 2.0;
     default_transform.set_translation_xyz(center, center, 0.0);
 
@@ -47,7 +46,7 @@ fn initialise_sneatling(world: &mut world, sprite_sheet_handle: Handle<SpriteShe
         .with(Sneatling::new())
         .with(default_transform)
         .with(sprite_render)
-        .build()
+        .build();
 }
 
 fn load_sprite_sheet(world: &mut World) -> Handle<SpriteSheet> {
@@ -55,7 +54,7 @@ fn load_sprite_sheet(world: &mut World) -> Handle<SpriteSheet> {
         let loader = world.read_resource::<Loader>();
         let texture_storage = world.read_resource::<AssetStorage<Texture>>();
         loader.load(
-            "texture/pong_spritesheet.png",
+            "sprites/Whale/1-Idle/1.png",
             ImageFormat::default(),
             (),
             &texture_storage,
@@ -66,7 +65,7 @@ fn load_sprite_sheet(world: &mut World) -> Handle<SpriteSheet> {
     let sprite_sheet_store = world.read_resource::<AssetStorage<SpriteSheet>>();
 
     loader.load(
-        "texture/pong_spritesheet.ron",
+        "sprite_configs/sneatling_spritesheet.ron",
         SpriteSheetFormat(texture_handler),
         (),
         &sprite_sheet_store,

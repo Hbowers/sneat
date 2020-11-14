@@ -6,8 +6,8 @@ use amethyst::{
     renderer::{Camera, ImageFormat, SpriteRender, SpriteSheet, SpriteSheetFormat, Texture},
 };
 
-pub const SNEATLING_HEIGHT: f32 = 16.0;
-pub const SNEATLING_HEIGHT: f32 = 4.0;
+pub const SNEATLING_WIDTH: f32 = 68.0;
+pub const SNEATLING_HEIGHT: f32 = 46.0;
 
 
 pub struct Sneatling {
@@ -16,10 +16,10 @@ pub struct Sneatling {
 }
 
 impl Sneatling {
-    fn new() -> Sneatling { 
+    pub fn new() -> Sneatling { 
         Sneatling {
             width: SNEATLING_WIDTH,
-            hegiht: SNEATLING_HEIGHT,
+            height: SNEATLING_HEIGHT,
         }
     }
 }

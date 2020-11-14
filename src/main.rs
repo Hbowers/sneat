@@ -10,8 +10,10 @@ use amethyst::{
     utils::application_root_dir,
 };
 
-mod systems;
+mod sneat;
+mod components;
 
+use sneat::Sneat;
 
 fn main() -> amethyst::Result<()> {
     amethyst::start_logger(Default::default());
@@ -36,12 +38,11 @@ fn main() -> amethyst::Result<()> {
     let game_data = GameDataBuilder::default()
         .with_bundle(input_bundle)?
         .with_bundle(transform_bundle)?
-        .with_bundle(render_bundle)?
+        .with_bundle(render_bundle)?;
 
     let assets_dir = app_root.join("assets");
-    let mut game = Application::new(assets_dir, Pong, game_data)?;
+    let mut game = Application::new(assets_dir, Sneat, game_data)?;
     game.run();
 
     Ok(())
 }
-d
