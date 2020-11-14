@@ -10,8 +10,8 @@ use crate::components::{Shape, Sneatling, Velocity, Floor};
 pub const ARENA_HEIGHT: f32 = 100.0;
 pub const ARENA_WIDTH: f32 = 100.0;
 
-pub const SNEATLING_WIDTH: f32 = 68.0;
-pub const SNEATLING_HEIGHT: f32 = 46.0;
+pub const SNEATLING_WIDTH: f32 = 3.0;
+pub const SNEATLING_HEIGHT: f32 = 2.0;
 
 pub struct Sneat;
 
@@ -69,6 +69,7 @@ fn initialise_floor(world: &mut World, sprite_sheet_handle: Handle<SpriteSheet>)
         world
             .create_entity()
             .with(Floor::new(16.0, 16.0))
+            .with(Shape::new(16.0, 16.0))
             .with(default_transform.clone())
             .with(sprite_render.clone())
             .build();
