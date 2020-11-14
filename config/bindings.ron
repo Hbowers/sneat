@@ -2,5 +2,7 @@
     axes: {
       "player_1_walk": Emulated(pos: Key(D), neg: Key(A)),
     },
-    actions: {}
+    actions: {
+      "player_1_jump": [[Key(Space)]],
+    }
 )

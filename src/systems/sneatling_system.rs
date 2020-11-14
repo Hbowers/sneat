@@ -23,6 +23,10 @@ impl<'s> System<'s> for SneatlingMovementSystem {
     fn run(&mut self, (mut velocities, sneatlings, input): Self::SystemData) {
         for (_sneatling, velocity) in (&sneatlings, &mut velocities).join() {
             let movement = input.axis_value("player_1_walk");
+            let jump = input.action_is_down("player_1_jump").unwrap_or(false);
+            if jump {
+                velocity.y = 3.;
+            }
             if velocity.y != 0.0 {
                 return;
             }

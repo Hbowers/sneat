@@ -6,11 +6,13 @@ use amethyst::{
     renderer::{Camera, ImageFormat, SpriteRender, SpriteSheet, SpriteSheetFormat, Texture},
 };
 
-
-use crate::components::{Sneatling, Velocity, Floor};
+use crate::components::{Shape, Sneatling, Velocity, Floor};
 
 pub const ARENA_HEIGHT: f32 = 100.0;
 pub const ARENA_WIDTH: f32 = 100.0;
+
+pub const SNEATLING_WIDTH: f32 = 68.0;
+pub const SNEATLING_HEIGHT: f32 = 46.0;
 
 pub struct Sneat;
 
@@ -22,9 +24,11 @@ impl SimpleState for Sneat {
         let environment_sprite_sheet_handle = load_sprite_sheet(world, "sprites/environment/tileset.png", "sprite_configs/environment_spritesheet.ron");
         initialise_camera(world);
         world.register::<Sneatling>();
+        world.register::<Velocity>();
         world.register::<Floor>();
-        initialise_sneatling(world, sneatling_sprite_sheet_handle);
+        world.register::<Shape>();
         initialise_floor(world, environment_sprite_sheet_handle);
+        initialise_sneatling(world, sneatling_sprite_sheet_handle);
     }
 }
 
@@ -47,6 +51,7 @@ fn initialise_sneatling(world: &mut World, sprite_sheet_handle: Handle<SpriteShe
     world
         .create_entity()
         .with(Sneatling::new())
+        .with(Shape::new(SNEATLING_WIDTH, SNEATLING_HEIGHT))
         .with(Velocity::new())
         .with(default_transform)
         .with(sprite_render)
@@ -95,4 +100,3 @@ fn load_sprite_sheet(world: &mut World, path_to_sprite: &str, path_to_sprite_con
         &sprite_sheet_store,
     )
 }
-
