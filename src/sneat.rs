@@ -6,6 +6,7 @@ use amethyst::{
 };
 
 use crate::components::{Shape, Sneatling, Velocity, Floor};
+use crate::resources::assets;
 
 pub const ARENA_HEIGHT: f32 = 100.0;
 pub const ARENA_WIDTH: f32 = 100.0;
@@ -19,8 +20,9 @@ impl SimpleState for Sneat {
     fn on_start(&mut self, data: StateData<'_, GameData<'_, '_>>) {
         let world = data.world;
 
-        let sneatling_sprite_sheet_handle = load_sprite_sheet(world, "sprites/Whale/1-Idle/1.png", "sprite_configs/sneatling_spritesheet.ron");
-        let environment_sprite_sheet_handle = load_sprite_sheet(world, "sprites/environment/tileset.png", "sprite_configs/environment_spritesheet.ron");
+        let sneatling_sprite_sheet_handle = assets::load_sprite_sheet_by_asset(world, assets::AssetType::Sneatling);
+        let environment_sprite_sheet_handle = assets::load_sprite_sheet_by_asset(world,assets::AssetType::GroundBlock);
+
         initialise_camera(world);
         world.register::<Sneatling>();
         world.register::<Velocity>();
@@ -78,25 +80,3 @@ fn initialise_floor(world: &mut World, sprite_sheet_handle: Handle<SpriteSheet>)
     }
 }
 
-fn load_sprite_sheet(world: &mut World, path_to_sprite: &str, path_to_sprite_config: &str) -> Handle<SpriteSheet> {
-    let texture_handler = {
-        let loader = world.read_resource::<Loader>();
-        let texture_storage = world.read_resource::<AssetStorage<Texture>>();
-        loader.load(
-            path_to_sprite,
-            ImageFormat::default(),
-            (),
-            &texture_storage,
-        )
-    };
-
-    let loader = world.read_resource::<Loader>();
-    let sprite_sheet_store = world.read_resource::<AssetStorage<SpriteSheet>>();
-
-    loader.load(
-        path_to_sprite_config,
-        SpriteSheetFormat(texture_handler),
-        (),
-        &sprite_sheet_store,
-    )
-}

@@ -18,6 +18,7 @@ pub mod sneat;
 // ECS
 pub mod components;
 pub mod systems;
+pub mod resources;
 
 pub use sneat::Sneat;
 
