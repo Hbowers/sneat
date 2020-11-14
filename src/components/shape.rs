@@ -6,15 +6,20 @@ use amethyst::{
     renderer::{Camera, ImageFormat, SpriteRender, SpriteSheet, SpriteSheetFormat, Texture},
 };
 
+pub struct Shape {
+    pub width: f32,
+    pub height: f32,
+}
 
-pub struct Sneatling {}
-
-impl Sneatling {
-    pub fn new() -> Sneatling { 
-        Sneatling {}
+impl Shape {
+    pub fn new(width: f32, height: f32) -> Shape{
+        Shape {
+            width,
+            height,
+        }
     }
 }
 
-impl Component for Sneatling {
+impl Component for Shape {
     type Storage = DenseVecStorage<Self>;
 }
