@@ -11,8 +11,8 @@ use crate::components::{Shape, Sneatling, Velocity, Floor};
 pub const ARENA_HEIGHT: f32 = 100.0;
 pub const ARENA_WIDTH: f32 = 100.0;
 
-pub const SNEATLING_WIDTH: f32 = 68.0;
-pub const SNEATLING_HEIGHT: f32 = 46.0;
+pub const SNEATLING_WIDTH: f32 = 3.0;
+pub const SNEATLING_HEIGHT: f32 = 2.0;
 
 pub struct Sneat;
 
