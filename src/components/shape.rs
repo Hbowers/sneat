@@ -1,10 +1,4 @@
-use amethyst::{
-    assets::{AssetStorage, Handle, Loader},
-    core::transform::Transform,
-    ecs::{Component, DenseVecStorage},
-    prelude::*,
-    renderer::{Camera, ImageFormat, SpriteRender, SpriteSheet, SpriteSheetFormat, Texture},
-};
+use amethyst::ecs::{Component, DenseVecStorage};
 
 pub struct Shape {
     pub width: f32,
