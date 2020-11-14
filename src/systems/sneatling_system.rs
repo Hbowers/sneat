@@ -20,7 +20,7 @@ impl<'s> System<'s> for SneatlingMovementSystem{
     );
 
     fn run(&mut self, (mut transforms, sneatlings, input): Self::SystemData){
-        for (sneatling, transform) in (&sneatlings, &mut transforms).join(){
+        for (_sneatling, transform) in (&sneatlings, &mut transforms).join(){
             let movement = input.axis_value("player_1_walk");
             if let Some(mv_amount) = movement {
                 if mv_amount != 0.0 {
