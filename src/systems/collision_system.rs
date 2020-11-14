@@ -38,7 +38,7 @@ impl<'s> System<'s> for CollisionSystem {
                     floor_x + floor_shape.width + sneatling_shape.width,
                     floor_y + floor_shape.height + sneatling_shape.height,
                 ) {
-                    sneatling_velocity.y = 0.0;
+                    sneatling_velocity.on_floor = false;
                 }
             }
         }
