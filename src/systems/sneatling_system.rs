@@ -11,6 +11,7 @@ pub use crate::components::Velocity;
 pub struct SneatlingMovementSystem;
 
 const SNEATLING_SPEED: f32 = 1.2;
+const SNEATLING_JUMP_HEIGHT: f32 = 1.2;
 
 impl<'s> System<'s> for SneatlingMovementSystem {
     type SystemData = (
@@ -29,7 +30,8 @@ impl<'s> System<'s> for SneatlingMovementSystem {
                 /* Actions Where the Sneatling is on the floor*/
                 let jump = input.action_is_down("player_1_jump").unwrap_or(false);
                 if jump {
-                    velocity.y = 3.;
+                    velocity.on_floor = false;
+                    velocity.y = SNEATLING_JUMP_HEIGHT;
                 }
 
                 if let Some(mv_amount) = movement {
