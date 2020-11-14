@@ -45,6 +45,7 @@ fn main() -> amethyst::Result<()> {
         .with_bundle(render_bundle)?
         .with(systems::SneatlingMovementSystem, "sneatling_system", &["input_system"])
         .with(systems::VelocitySystem, "velocity_system", &["sneatling_system"])
+        .with(systems::CollisionSystem, "collision_system", &["sneatling_system"])
         ;
 
     let assets_dir = app_root.join("assets");

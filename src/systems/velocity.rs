@@ -13,7 +13,7 @@ pub struct VelocitySystem;
 const X_DRAG: f32 = 2.;
 const MAX_Y_SPEED: f32 = 1.2;
 // FIXME: Change back to a meaningful value
-const GRAVITY: f32 = 0.;
+const GRAVITY: f32 = -1.;
 
 impl<'s> System<'s> for VelocitySystem {
     type SystemData = (

@@ -70,6 +70,7 @@ fn initialise_floor(world: &mut World, sprite_sheet_handle: Handle<SpriteSheet>)
         world
             .create_entity()
             .with(Floor::new(16.0, 16.0))
+            .with(Shape::new(16.0, 16.0))
             .with(default_transform.clone())
             .with(sprite_render.clone())
             .build();
