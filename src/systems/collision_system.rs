@@ -35,7 +35,6 @@ impl<'s> System<'s> for CollisionSystem {
                     floor_x + floor_shape.width + sneatling_shape.width /2.,
                     floor_y + floor_shape.height + sneatling_shape.height /2.,
                 ) {
-                    println!("colliding");
                     has_hit_floor = true;
                 }
             }
