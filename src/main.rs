@@ -75,7 +75,7 @@ fn main() -> amethyst::Result<()> {
             systems::CollisionSystem,
             "collision_system",
             &["velocity_system"],
-        )
+        );
 
     let assets_dir = app_root.join("assets");
     let mut game = Application::new(assets_dir, Sneat, game_data)?;

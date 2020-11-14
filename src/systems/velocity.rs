@@ -37,10 +37,10 @@ impl<'s> System<'s> for VelocitySystem {
 
             /* Updating velocities */
             if !velocity.on_floor {
-                if velocity.x > 0.0 {
+                if velocity.x >= 0.0 {
                     velocity.x = (velocity.x - time.delta_seconds() * X_AIR_DRAG).min(0.0);
                 }
-                if velocity.x < 0.0 {
+                if velocity.x <= 0.0 {
                     velocity.x = (velocity.x + time.delta_seconds() * X_AIR_DRAG).max(0.0);
                 }
             }  
