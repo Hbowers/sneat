@@ -9,10 +9,16 @@ use crate::components::Edible;
 use crate::components::Shape;
 use crate::components::Sneatling;
 use crate::components::SpitTravel;
+use crate::components::Velocity;
 use crate::types::Direction;
 
 #[derive(SystemDesc)]
 pub struct SpittingSystem;
+
+const SPIT_BOOST_MOVING_X: f32 = 2.3;
+const SPIT_BOOST_MOVING_Y: f32 = 2.3;
+const SPIT_SPEED_STANDING_X: f32 = 0.6;
+const SPIT_SPEED_STANDING_Y: f32 = 2.3;
 
 impl<'s> System<'s> for SpittingSystem {
     type SystemData = (
@@ -22,13 +28,24 @@ impl<'s> System<'s> for SpittingSystem {
         WriteStorage<'s, Hidden>,
         WriteStorage<'s, Transform>,
         WriteStorage<'s, SpitTravel>,
+        ReadStorage<'s, Velocity>,
     );
 
     fn run(
         &mut self,
-        (entities, mut edibles, mut sneatlings, mut hiddens, transforms, mut spit_travels): Self::SystemData,
+        (
+            entities,
+            mut edibles,
+            mut sneatlings,
+            mut hiddens,
+            transforms,
+            mut spit_travels,
+            velocities,
+        ): Self::SystemData,
     ) {
-        for (sneatling, sneatling_transform) in (&mut sneatlings, &transforms).join() {
+        for (sneatling, sneatling_transform, sneatling_velocity) in
+            (&mut sneatlings, &transforms, &velocities).join()
+        {
             let sneatling_x = sneatling_transform.translation().x;
             let sneatling_y = sneatling_transform.translation().y;
             for (entity, edible) in (&*entities, &mut edibles).join() {
@@ -54,8 +71,32 @@ impl<'s> System<'s> for SpittingSystem {
 
                     let pos = (sneatling_x, sneatling_y);
                     let vel = match sneatling.direction {
-                        Direction::Left => (-3., 4.),
-                        Direction::Right => (3., 4.),
+                        Direction::Left => {
+                            let x_vel = if sneatling_velocity.x != 0. {
+                                sneatling_velocity.x - SPIT_BOOST_MOVING_X
+                            } else {
+                                -SPIT_SPEED_STANDING_X
+                            };
+                            let y_vel = if sneatling_velocity.y > 0. {
+                                sneatling_velocity.y + SPIT_BOOST_MOVING_Y
+                            } else {
+                                SPIT_SPEED_STANDING_Y
+                            };
+                            (x_vel, y_vel)
+                        },
+                        Direction::Right => {
+                            let x_vel = if sneatling_velocity.x != 0. {
+                                sneatling_velocity.x + SPIT_BOOST_MOVING_X
+                            } else {
+                                SPIT_SPEED_STANDING_X
+                            };
+                            let y_vel = if sneatling_velocity.y > 0. {
+                                sneatling_velocity.y + SPIT_BOOST_MOVING_Y
+                            } else {
+                                SPIT_SPEED_STANDING_Y
+                            };
+                            (x_vel, y_vel)
+                        },
                     };
 
                     // FIXME: unwrap is dirty
