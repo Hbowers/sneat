@@ -23,9 +23,9 @@ impl<'s> System<'s> for AnimationChangingSystem {
 
     fn run(
         &mut self,
-        (entities, mut animations, sneatlings): Self::SystemData,
+        (entities, mut animations,sneatlings): Self::SystemData,
     ) {
-        for (entity, sneatling) in (&entities, &sneatlings).join() {
+        for (entity, sneatling ) in (&entities, &sneatlings).join() {
             match &sneatling.sneatling_anim_state {
                SneatlingAnimState::Idle=> {
                     let new_animation = Animation {
@@ -61,17 +61,17 @@ impl<'s> System<'s> for AnimationChangingSystem {
                 },
                 SneatlingAnimState::Eating => {
                     let new_animation = Animation {
-                        frames: 10,
+                        frames: 5,
                         frame_duration: ANIMATION_DURATION,
-                        first_sprite_index: 79,
+                        first_sprite_index: 84,
                     };
                     animations.insert(entity, new_animation);
                 },
                 SneatlingAnimState::Spitting => {
                     let new_animation = Animation {
-                        frames: 11,
+                        frames: 3,
                         frame_duration: ANIMATION_DURATION,
-                        first_sprite_index: 68,
+                        first_sprite_index: 79,
                     };
                     animations.insert(entity, new_animation);
                 },
