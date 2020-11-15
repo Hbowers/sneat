@@ -1,11 +1,12 @@
 use amethyst::{
     derive::SystemDesc,
-    ecs::{Join, Read, ReadStorage, System, SystemData, WriteStorage},
+    ecs::{Join, Read, System, SystemData, WriteStorage},
     input::{InputHandler, StringBindings},
 };
 
 pub use crate::components::Sneatling;
 pub use crate::components::Velocity;
+pub use crate::types::Direction;
 
 #[derive(SystemDesc)]
 pub struct SneatlingMovementSystem;
@@ -29,10 +30,8 @@ impl<'s> System<'s> for SneatlingMovementSystem {
             let eat = input.action_is_down("player_1_eat").unwrap_or(false);
             if eat {
                 sneatling.is_eating = true;
-                println!("EAT!")
             } else {
                 sneatling.is_eating = false;
-                println!("NEAT!")
             };
             if !velocity.on_floor {
                 if let Some(mv_amount) = movement {
@@ -41,9 +40,11 @@ impl<'s> System<'s> for SneatlingMovementSystem {
                         let new_velocity = velocity.x + scaled_movement;
                         if new_velocity > 0.0 && velocity.x < SNEATLING_AIR_SPEED {
                             velocity.x = new_velocity.min(SNEATLING_SPEED);
+                            sneatling.direction = Direction::Right;
                         }
                         if new_velocity < 0.0 && velocity.x > -SNEATLING_AIR_SPEED {
                             velocity.x = new_velocity.max(-SNEATLING_SPEED);
+                            sneatling.direction = Direction::Left;
                         }
                     }
                 }
@@ -63,9 +64,13 @@ impl<'s> System<'s> for SneatlingMovementSystem {
                         let new_velocity = velocity.x + scaled_movement;
                         if new_velocity > 0.0 {
                             velocity.x = new_velocity.min(SNEATLING_SPEED);
+                            sneatling.direction = Direction::Right;
+                            println!("Turning RIGHT")
                         }
                         if new_velocity < 0.0 {
                             velocity.x = new_velocity.max(-SNEATLING_SPEED);
+                            sneatling.direction = Direction::Left;
+                            println!("Turning LEFT")
                         }
                     }
                 }
