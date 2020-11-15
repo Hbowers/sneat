@@ -1,46 +1,43 @@
 use amethyst::{
     core::{Transform},
-    ecs::{Join, ReadStorage, System, WriteStorage},
+    ecs::{Entities, Join, ReadStorage, System, WriteStorage},
 };
 
-use crate::components::{Collider,Collidee, Floor, Shape, Velocity};
+use crate::components::{Collider, Floor, Shape, Velocity};
 use crate::helpers::point_within_range;
 
 pub struct CollisionSystem;
 
 impl<'s> System<'s> for CollisionSystem {
     type SystemData = (
+        Entities<'s>,
         WriteStorage<'s, Velocity>,
         ReadStorage<'s, Collider>,
-        ReadStorage<'s, Collidee>,
         ReadStorage<'s, Floor>,
         ReadStorage<'s, Shape>,
         ReadStorage<'s, Transform>,
     );
 
-    fn run(&mut self, (mut velocities, collides, collidees, floors, shapes, transforms): Self::SystemData) {
+    fn run(&mut self, (entities, mut velocities, collides, floors, shapes, transforms): Self::SystemData) {
 
-        for (_can_collide, collider_shape, collider_transform, collider_velocity) in (&collides, &shapes, &transforms, &mut velocities).join() {
+        for (entity, _can_collide, collider_shape, collider_transform, collider_velocity) in (&entities, &collides, &shapes, &transforms, &mut velocities).join() {
             let collider_x = collider_transform.translation().x;
             let collider_y = collider_transform.translation().y;
 
-
             let mut collided = false;
-            for (_other_can_collide, other_collider_shape, other_collider_transform) in (&collides, &shapes, &transforms).join() {
-                // if _other_can_collide.can_collide {
+            for (other_entity, _other_can_collide, other_collider_shape, other_collider_transform) in (&entities, &collides, &shapes, &transforms).join() {
+                if entity.id() != other_entity.id() {
+                    let other_collider_x = other_collider_transform.translation().x - (other_collider_shape.width * 0.5);
+                    let other_collider_y = other_collider_transform.translation().y + (other_collider_shape.height * 0.5);
 
-                // }
-                let other_collider_x = other_collider_transform.translation().x - (other_collider_shape.width * 0.5);
-                let other_collider_y = other_collider_transform.translation().y + (other_collider_shape.height * 0.5);
-
-                if points_in_contact(
-                    collider_x,
-                    collider_y + (collider_shape.height * 0.5),
-                 collider_shape.width,
-                    other_collider_x,
-                    other_collider_y,
-                other_collider_shape.width) {
-                    collided = true
+                    if points_in_contact(
+                        collider_x,
+                        collider_y - (collider_shape.height * 0.5),
+                        other_collider_x,
+                        other_collider_y,
+                    other_collider_shape.width) {
+                        collided = true
+                    }
                 }
             }
 
@@ -62,8 +59,10 @@ impl<'s> System<'s> for CollisionSystem {
             }
             if collided {
                 collider_velocity.collided = true;
+                // println!("Entity {:?} has collided with {:?}", entity.id(), other_entity.id());
             } else {
                 collider_velocity.collided = false;
+                // println!("Entity {:?} has not collided with {:?}", entity.id(), other_entity.id());
             }
         }
     }
@@ -73,15 +72,11 @@ fn point_in_rect(x: f32, y: f32, left: f32, bottom: f32, right: f32, top: f32) -
     x >= left && x <= right && y >= bottom && y <= top
 }
 
-fn points_in_contact(x1: f32, y1: f32, width1: f32, x2: f32, y2: f32, width2: f32) -> bool {
+fn points_in_contact(x1: f32, y1: f32, x2: f32, y2: f32, width2: f32) -> bool {
     if
-        point_within_range(y2, y1 + 1., y1) &&
+        point_within_range(y2 - 0.5, y2 + 0.5, y1) &&
         point_within_range(x2, x2 + width2, x1)
-        // x1 > x2 && x1 + width1 < x2 + width2 ||
-        // x1 + width1 > x2 && x1 < x2
     {
-        println!("Collider pos: x{:?}, y{:?}", x1, y1);
-        println!("other collider pos: x{:?}, y{:?}, width{:?}", x2, y2, width2);
         true
     } else {
         false
