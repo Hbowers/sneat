@@ -1,6 +1,6 @@
 use amethyst::{
-    core::Transform,
     core::Hidden,
+    core::Transform,
     derive::SystemDesc,
     ecs::{Entities, Join, ReadStorage, System, SystemData, WriteStorage},
 };
@@ -33,11 +33,14 @@ impl<'s> System<'s> for EatingSystem {
         for (sneatling, sneatling_transform) in (&mut sneatlings, &transforms).join() {
             let sneatling_x = sneatling_transform.translation().x;
             let sneatling_y = sneatling_transform.translation().y;
+                if !sneatling.is_eating || sneatling.has_eaten {
+                    return;
+                };
 
             for (entity, edible, edible_shape, edible_transform) in
                 (&*entities, &mut edibles, &shapes, &transforms).join()
             {
-                if !sneatling.is_eating {
+                if edible.in_stomach {
                     return;
                 };
 
@@ -66,8 +69,15 @@ impl<'s> System<'s> for EatingSystem {
 
                 if in_range_x && in_range_y {
                     sneatling.is_eating = false;
+                    sneatling.has_eaten = true;
+                    sneatling.stomach_stack += 1;
+                    println!("Sneatling Stomach Stack: {}", sneatling.stomach_stack);
+
                     edible.in_stomach = true;
-                    hiddens.insert(entity,Hidden).unwrap();
+                    edible.stomach_id = sneatling.stomach_stack;
+                    println!("Edible ID: {}", edible.stomach_id);
+
+                    hiddens.insert(entity, Hidden).unwrap();
                 }
             }
         }
