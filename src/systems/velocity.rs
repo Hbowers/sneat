@@ -32,14 +32,14 @@ impl<'s> System<'s> for VelocitySystem {
                 transform.prepend_translation_y(velocity.y);
             };
 
-            if !velocity.on_floor {
+            if !velocity.collided {
                 velocity.y = (velocity.y + GRAVITY * time.delta_seconds())
                     .min(MAX_Y_SPEED)
                     .max(-MAX_Y_SPEED);
             }
 
             /* Updating velocities */
-            if !velocity.on_floor {
+            if !velocity.collided {
                 if velocity.x >= 0.0 {
                     velocity.x = (velocity.x - time.delta_seconds() * X_AIR_DRAG).max(0.);
                 }
@@ -47,7 +47,7 @@ impl<'s> System<'s> for VelocitySystem {
                     velocity.x = (velocity.x + time.delta_seconds() * X_AIR_DRAG).min(0.);
                 }
             }
-            if velocity.on_floor {
+            if velocity.collided {
                 velocity.y = 0.0;
                 if velocity.x >= 0.0 {
                     velocity.x = (velocity.x - time.delta_seconds() * X_DRAG).max(0.);

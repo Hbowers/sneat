@@ -16,6 +16,7 @@ use amethyst::{
 pub mod constants;
 pub mod sneat;
 pub mod types;
+pub mod helpers;
 
 // ECS
 pub mod components;

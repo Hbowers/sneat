@@ -5,7 +5,8 @@ pub use self::sneatling::Sneatling;
 pub use self::velocity::Velocity;
 pub use self::covers::Covers;
 pub use self::coverable::Coverable;
-pub use self::collides::Collides;
+pub use self::collider::Collider;
+pub use self::collidee::Collidee;
 pub use self::edible::Edible;
 
 pub mod barrel;
@@ -15,5 +16,6 @@ pub mod sneatling;
 pub mod velocity;
 pub mod covers;
 pub mod coverable;
-pub mod collides;
+pub mod collider;
+pub mod collidee;
 pub mod edible;
