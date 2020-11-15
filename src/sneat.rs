@@ -7,6 +7,67 @@ use crate::constants::{ARENA_HEIGHT, ARENA_WIDTH};
 use crate::entities::{barrel, cover, floor, sneatling, camera, camera_focus};
 use crate::resources::assets;
 
+const s: &str = "
+Level(
+    entities: [
+    (
+        entity_type: Sneatling,
+        health: 20.0,
+        x: 23.3,
+        y: 23.3
+    ),
+    (
+        entity_type: Barrel,
+        health: 100.0,
+        x: 13.3,
+        y: 70.0
+    ),
+    (
+        entity_type: Barrel,
+        health: 100.0,
+        x: 13.3,
+        y: 63.3
+    ),
+    (
+        entity_type: Barrel,
+        health: 100.0,
+        x: 13.3,
+        y: 80.0
+    ),
+    ],
+    floors: [
+    (
+        x_start: 3.0,
+        x_end: 90.0,
+        y: 16.0,
+    ),
+    (
+        x_start: 3.0,
+        x_end: 10.0,
+        y: 24.0,
+    ),
+    (
+        x_start: 80.0,
+        x_end: 90.0,
+        y: 24.0,
+    )
+    ],
+    cover: [
+    (
+        x_start: 12.0,
+        x_end: 30.0,
+        y: 24.0,
+    ),
+    (
+        x_start: 50.0,
+        x_end: 80.0,
+        y: 24.0,
+    ),
+    ]
+)
+
+";
+
 pub struct Sneat;
 pub struct Paused;
 
@@ -55,8 +116,8 @@ impl SimpleState for Sneat {
         let barrel_sprite_sheet_handle =
             assets::load_sprite_sheet_by_asset(world, assets::AssetType::Barrel);
 
-        let level_path = "level_1.ron";
-        let s = fs::read_to_string(level_path).expect("Could not find file");
+        // let level_path = "level_1.ron";
+        // let s = fs::read_to_string(level_path).expect("Could not find file");
         let level: Level = ron::de::from_str(&s).unwrap();
 
         world.register::<Sneatling>();
