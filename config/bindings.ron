@@ -4,5 +4,7 @@
     },
     actions: {
       "player_1_jump": [[Key(Space)]],
+      "player_1_eat": [[Key(E)]],
+      "player_1_spit": [[Key(F)]],
     }
 )
