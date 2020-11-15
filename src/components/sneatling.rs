@@ -1,10 +1,12 @@
 use amethyst::ecs::{Component, DenseVecStorage};
 
-pub struct  Sneatling {}
+pub struct  Sneatling {
+    pub is_eating: bool,
+}
 
 impl Sneatling {
     pub fn new() -> Sneatling {
-        Sneatling {}
+        Sneatling { is_eating: false }
     }
 }
 

@@ -17,18 +17,22 @@ const SNEATLING_JUMP_HEIGHT: f32 = 0.6;
 impl<'s> System<'s> for SneatlingMovementSystem {
     type SystemData = (
         WriteStorage<'s, Velocity>,
-        ReadStorage<'s, Sneatling>,
+        WriteStorage<'s, Sneatling>,
         Read<'s, InputHandler<StringBindings>>,
     );
 
-    fn run(&mut self, (mut velocities, sneatlings, input): Self::SystemData) {
-        for (_sneatling, velocity) in (&sneatlings, &mut velocities).join() {
+    fn run(&mut self, (mut velocities,mut sneatlings, input): Self::SystemData) {
+        for (sneatling, velocity) in (&mut sneatlings, &mut velocities).join() {
             let movement = input.axis_value("player_1_walk");
 
             /* Actions where the Sneatling can be falling */
             let eat = input.action_is_down("player_1_eat").unwrap_or(false);
             if eat {
+                sneatling.is_eating = true;
                 println!("EAT!")
+            } else {
+                sneatling.is_eating = false;
+                println!("NEAT!")
             };
             if !velocity.on_floor {
                 if let Some(mv_amount) = movement {
