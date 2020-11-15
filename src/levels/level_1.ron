@@ -30,6 +30,16 @@ Level(
         x_start: 3.0,
         x_end: 90.0,
         y: 16.0,
+    ),
+    (
+        x_start: 3.0,
+        x_end: 10.0,
+        y: 24.0,
+    ),
+    (
+        x_start: 80.0,
+        x_end: 90.0,
+        y: 24.0,
     )
     ],
     cover: [

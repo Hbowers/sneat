@@ -14,10 +14,12 @@ use crate::types::Direction;
 #[derive(SystemDesc)]
 pub struct SpittingSystem;
 
-const SPIT_BOOST_MOVING_X: f32 = 2.3;
+const SPIT_BOOST_MOVING_X: f32 = 1.2;
 const SPIT_BOOST_MOVING_Y: f32 = 2.3;
 const SPIT_SPEED_STANDING_X: f32 = 0.6;
-const SPIT_SPEED_STANDING_Y: f32 = 2.3;
+const SPIT_SPEED_STANDING_Y: f32 = 5.3;
+const X_OFFSET: f32 = 0.3;
+const Y_OFFSET: f32 = 2.5;
 
 impl<'s> System<'s> for SpittingSystem {
     type SystemData = (
@@ -66,7 +68,7 @@ impl<'s> System<'s> for SpittingSystem {
                     edible.in_stomach = false;
                     edible.stomach_id = -1;
 
-                    let pos = (sneatling_x, sneatling_y);
+                    let pos = (sneatling_x + X_OFFSET, sneatling_y + Y_OFFSET);
                     let vel = match sneatling.direction {
                         Direction::Left => {
                             let x_vel = if sneatling_velocity.x != 0. {
@@ -80,7 +82,7 @@ impl<'s> System<'s> for SpittingSystem {
                                 SPIT_SPEED_STANDING_Y
                             };
                             (x_vel, y_vel)
-                        },
+                        }
                         Direction::Right => {
                             let x_vel = if sneatling_velocity.x != 0. {
                                 sneatling_velocity.x + SPIT_BOOST_MOVING_X
@@ -93,7 +95,7 @@ impl<'s> System<'s> for SpittingSystem {
                                 SPIT_SPEED_STANDING_Y
                             };
                             (x_vel, y_vel)
-                        },
+                        }
                     };
 
                     // FIXME: unwrap is dirty
