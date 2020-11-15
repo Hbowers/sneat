@@ -1,14 +1,10 @@
-use amethyst::{
-    ecs::{Component, DenseVecStorage},
-};
+use amethyst::ecs::{Component, DenseVecStorage};
 
-pub struct  Barrel {
-}
+pub struct Barrel {}
 
 impl Barrel {
     pub fn new() -> Barrel {
-        Barrel {
-        }
+        Barrel {}
     }
 }
 

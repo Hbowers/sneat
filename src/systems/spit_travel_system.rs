@@ -2,15 +2,11 @@ use amethyst::{
     core::Hidden,
     core::Transform,
     derive::SystemDesc,
-    ecs::{Entities, Join, ReadStorage, System, SystemData, WriteStorage},
+    ecs::{Entities, Join,  System, SystemData, WriteStorage},
 };
 
-use crate::components::Edible;
-use crate::components::Shape;
-use crate::components::Sneatling;
 use crate::components::Velocity;
 use crate::components::SpitTravel;
-use crate::types::Direction;
 
 #[derive(SystemDesc)]
 pub struct SpitTravelSystem;
