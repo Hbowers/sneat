@@ -80,7 +80,6 @@ fn main() -> amethyst::Result<()> {
             systems::CoverSystem,
             "cover_system",
             &["sneatling_system"],
-        );
         )
         .with(systems::EatingSystem,
             "eating_system",

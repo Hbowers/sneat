@@ -17,7 +17,7 @@ impl Coverable {
         }
     }
 
-    pub fn inCover(&self) -> bool {
+    pub fn in_cover(&self) -> bool {
         self.covered_amount >= MIN_COVERED_AMOUNT
     }
 }

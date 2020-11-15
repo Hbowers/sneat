@@ -36,7 +36,7 @@ impl<'s> System<'s> for CoverSystem {
             }
 
             coverable.covered_amount = covered_amount;
-            if !coverable.inCover() {
+            if !coverable.in_cover() {
                 coverable.time_out_of_cover += time.delta_seconds();
             } else {
                 coverable.time_out_of_cover = 0.0;
