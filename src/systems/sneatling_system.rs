@@ -65,12 +65,10 @@ impl<'s> System<'s> for SneatlingMovementSystem {
                         if new_velocity > 0.0 {
                             velocity.x = new_velocity.min(SNEATLING_SPEED);
                             sneatling.direction = Direction::Right;
-                            println!("Turning RIGHT")
                         }
                         if new_velocity < 0.0 {
                             velocity.x = new_velocity.max(-SNEATLING_SPEED);
                             sneatling.direction = Direction::Left;
-                            println!("Turning LEFT")
                         }
                     }
                 }

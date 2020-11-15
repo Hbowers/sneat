@@ -1,7 +1,8 @@
 use amethyst::{
     core::Transform,
+    core::Hidden,
     derive::SystemDesc,
-    ecs::{Join, Read, ReadStorage, System, SystemData, WriteStorage},
+    ecs::{Entities, Join, ReadStorage, System, SystemData, WriteStorage},
 };
 
 use crate::components::Edible;
@@ -17,21 +18,28 @@ const EDIBLE_DISTANCE_Y: f32 = 2.;
 
 impl<'s> System<'s> for EatingSystem {
     type SystemData = (
+        Entities<'s>,
         WriteStorage<'s, Edible>,
         WriteStorage<'s, Sneatling>,
+        WriteStorage<'s, Hidden>,
         ReadStorage<'s, Transform>,
         ReadStorage<'s, Shape>,
     );
 
-    fn run(&mut self, (mut edibles, mut sneatlings, transforms, shapes): Self::SystemData) {
+    fn run(
+        &mut self,
+        (entities, mut edibles, mut sneatlings, mut hiddens, transforms, shapes): Self::SystemData,
+    ) {
         for (sneatling, sneatling_transform) in (&mut sneatlings, &transforms).join() {
             let sneatling_x = sneatling_transform.translation().x;
             let sneatling_y = sneatling_transform.translation().y;
 
-            for (edible, edible_shape, edible_transform) in
-                (&mut edibles, &shapes, &transforms).join()
+            for (entity, edible, edible_shape, edible_transform) in
+                (&*entities, &mut edibles, &shapes, &transforms).join()
             {
-                if !sneatling.is_eating { return };
+                if !sneatling.is_eating {
+                    return;
+                };
 
                 let edible_x = edible_transform.translation().x;
                 let edible_y = edible_transform.translation().y;
@@ -59,7 +67,7 @@ impl<'s> System<'s> for EatingSystem {
                 if in_range_x && in_range_y {
                     sneatling.is_eating = false;
                     edible.in_stomach = true;
-                    println!("HE ATE IT!")
+                    hiddens.insert(entity,Hidden).unwrap();
                 }
             }
         }

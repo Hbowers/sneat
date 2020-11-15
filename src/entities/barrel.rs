@@ -1,6 +1,7 @@
 use amethyst::{
     assets::Handle,
     core::transform::Transform,
+    core::Hidden,
     prelude::*,
     renderer::{SpriteRender, SpriteSheet},
 };
