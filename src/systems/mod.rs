@@ -8,6 +8,7 @@ pub use self::spit_travel_system::SpitTravelSystem;
 pub use self::camera_system::CameraSystem;
 pub use self::damage_system::DamageSystem;
 pub use self::animation_system::AnimationSystem;
+pub use self::animation_changing_system::AnimationChangingSystem;
 
 pub mod sneatling_system;
 pub mod velocity;
@@ -19,3 +20,4 @@ pub mod spit_travel_system;
 pub mod camera_system;
 pub mod damage_system;
 pub mod animation_system;
+pub mod animation_changing_system;

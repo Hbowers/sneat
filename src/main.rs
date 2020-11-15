@@ -67,6 +67,7 @@ fn main() -> amethyst::Result<()> {
         .with_bundle(StartingBundle {})?
         .with_bundle(render_bundle)?
         .with(systems::AnimationSystem, "animation_system", &[])
+        .with(systems::AnimationChangingSystem, "animation_changing_system", &[])
         .with(systems::SneatlingMovementSystem, "sneatling_system", &[])
         .with(
             systems::VelocitySystem,
