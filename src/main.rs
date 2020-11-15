@@ -14,8 +14,11 @@ use amethyst::{
 
 // Game
 pub mod sneat;
+pub mod constants;
+pub mod types;
 
 // ECS
+pub mod entities;
 pub mod components;
 pub mod systems;
 pub mod resources;

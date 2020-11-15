@@ -1,6 +1,6 @@
 use amethyst::ecs::{Component, DenseVecStorage};
 
-pub struct Sneatling {}
+pub struct  Sneatling {}
 
 impl Sneatling {
     pub fn new() -> Sneatling {

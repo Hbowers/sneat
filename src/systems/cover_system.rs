@@ -1,6 +1,6 @@
 use amethyst::{
-    core::{Transform},
-    ecs::{Join, ReadStorage, System, WriteStorage},
+    core::{Time, Transform},
+    ecs::{Join, Read, ReadStorage, System, WriteStorage},
 };
 
 use crate::components::{Coverable, Shape, Covers};
@@ -13,9 +13,10 @@ impl<'s> System<'s> for CoverSystem {
         ReadStorage<'s, Covers>,
         ReadStorage<'s, Shape>,
         ReadStorage<'s, Transform>,
+        Read<'s, Time>,
     );
 
-    fn run(&mut self, (mut coverables, covers, shapes, transforms): Self::SystemData) {
+    fn run(&mut self, (mut coverables, covers, shapes, transforms, time): Self::SystemData) {
 
         for (coverable, coverable_shape, coverable_transform) in (&mut coverables, &shapes, &transforms).join() {
             let mut covered_amount = 0.0;
@@ -35,7 +36,11 @@ impl<'s> System<'s> for CoverSystem {
             }
 
             coverable.covered_amount = covered_amount;
-            println!("Entity covered amount: {:?}", coverable.covered_amount);
+            if !coverable.inCover() {
+                coverable.time_out_of_cover += time.delta_seconds();
+            } else {
+                coverable.time_out_of_cover = 0.0;
+            }
         }
     }
 }

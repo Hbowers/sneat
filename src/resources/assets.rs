@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 
 use amethyst::{
-    assets::{AssetStorage, Handle, Loader, Prefab, PrefabLoader, ProgressCounter, RonFormat},
+    assets::{AssetStorage, Handle, Loader},
     ecs::prelude::World,
     prelude::WorldExt,
     renderer::{
@@ -15,6 +15,7 @@ use amethyst::{
 pub enum AssetType {
     Sneatling,
     GroundBlock,
+    Barrel,
 }
 
 #[derive(Default)]
@@ -41,6 +42,10 @@ pub fn load_sprite_sheet_by_asset(world: &mut World, asset: AssetType) -> Handle
         AssetType::GroundBlock => (
             "sprites/environment/tileset.png",
             "sprite_configs/environment_spritesheet.ron",
+        ),
+        AssetType::Barrel=> (
+            "sprites/barrel/Barrel.png",
+            "sprite_configs/barrel_spritesheet.ron",
         ),
     };
 
