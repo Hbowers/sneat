@@ -2,6 +2,9 @@ use amethyst::{
     assets::Handle,
     core::transform::Transform,
     ecs::{prelude::World, Entity},
+    core::{
+        math::{Vector3},
+    },
     prelude::*,
     renderer::{SpriteRender, SpriteSheet},
 };
@@ -9,14 +12,15 @@ use amethyst::{
 use crate::components::{Shape, Sneatling, Velocity, Collider, Coverable, Health};
 use crate::constants::ARENA_HEIGHT;
 
-const SNEATLING_WIDTH: f32 = 3.0;
-const SNEATLING_HEIGHT: f32 = 2.0;
+const SNEATLING_WIDTH: f32 = 6.0;
+const SNEATLING_HEIGHT: f32 = 6.0;
 
 pub fn initialise_sneatling(world: &mut World, sprite_sheet_handle: Handle<SpriteSheet>, sneatling_health: f32) -> Entity {
     let sprite_render = SpriteRender::new(sprite_sheet_handle, 0);
     let mut default_transform = Transform::default();
     let center = ARENA_HEIGHT / 2.0;
     default_transform.set_translation_xyz(center, center, 0.75);
+    default_transform.set_scale(Vector3::new(0.08, 0.08, 1.));
 
     world
         .create_entity()

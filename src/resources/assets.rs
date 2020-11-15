@@ -36,8 +36,8 @@ impl SpriteSheetTable {
 pub fn load_sprite_sheet_by_asset(world: &mut World, asset: AssetType) -> Handle<SpriteSheet> {
     let (path_to_sprite, path_to_sprite_config) = match asset {
         AssetType::Sneatling => (
-            "sprites/Whale/1-Idle/1.png",
-            "sprite_configs/sneatling_spritesheet.ron",
+            "sprites/Whale/whale.png",
+            "sprite_configs/whale_config.ron",
         ),
         AssetType::EnvironmentBlock => (
             "sprites/environment/tileset.png",
