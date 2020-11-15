@@ -7,6 +7,8 @@ use amethyst::{
 
 use crate::components::Velocity;
 use crate::components::SpitTravel;
+use crate::types::Direction;
+use crate::components::Collider;
 
 #[derive(SystemDesc)]
 pub struct SpitTravelSystem;
@@ -18,11 +20,12 @@ impl<'s> System<'s> for SpitTravelSystem {
         WriteStorage<'s, Velocity>,
         WriteStorage<'s, Transform>,
         WriteStorage<'s, SpitTravel>,
+        WriteStorage<'s, Collider>,
     );
 
     fn run(
         &mut self,
-        (entities, mut hiddens,mut velocities, mut transforms, mut spit_travels): Self::SystemData,
+        (entities, mut hiddens,mut velocities, mut transforms, mut spit_travels, mut colliders): Self::SystemData,
     ) {
         let mut to_remove = Vec::new();
         for (entity, spit_item_transform, spit_travel, mut velocity) in (&entities, &mut transforms, &spit_travels, &mut velocities).join() {
@@ -37,6 +40,7 @@ impl<'s> System<'s> for SpitTravelSystem {
         for entity in to_remove {
             hiddens.remove(entity);
             spit_travels.remove(entity);
+            colliders.insert(entity, Collider::new()).unwrap();
         }
     }
 }

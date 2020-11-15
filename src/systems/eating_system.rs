@@ -8,6 +8,7 @@ use amethyst::{
 use crate::components::Edible;
 use crate::components::Shape;
 use crate::components::Sneatling;
+use crate::components::Collider;
 use crate::types::Direction;
 
 #[derive(SystemDesc)]
@@ -22,13 +23,14 @@ impl<'s> System<'s> for EatingSystem {
         WriteStorage<'s, Edible>,
         WriteStorage<'s, Sneatling>,
         WriteStorage<'s, Hidden>,
+        WriteStorage<'s, Collider>,
         ReadStorage<'s, Transform>,
         ReadStorage<'s, Shape>,
     );
 
     fn run(
         &mut self,
-        (entities, mut edibles, mut sneatlings, mut hiddens, transforms, shapes): Self::SystemData,
+        (entities, mut edibles, mut sneatlings, mut hiddens, mut colliders, transforms, shapes): Self::SystemData,
     ) {
         for (sneatling, sneatling_transform) in (&mut sneatlings, &transforms).join() {
             let sneatling_x = sneatling_transform.translation().x;
@@ -76,6 +78,7 @@ impl<'s> System<'s> for EatingSystem {
                     edible.stomach_id = sneatling.stomach_stack;
 
                     hiddens.insert(entity, Hidden).unwrap();
+                    colliders.remove(entity);
                 }
             }
         }

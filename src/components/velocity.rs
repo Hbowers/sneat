@@ -4,7 +4,7 @@ use amethyst::ecs::{Component, DenseVecStorage};
 pub struct Velocity {
     pub x: f32,
     pub y: f32,
-    pub on_floor: bool,
+    pub collided: bool,
 }
 
 impl Velocity {
@@ -12,7 +12,7 @@ impl Velocity {
         Velocity {
             x: 0.0,
             y: 0.0,
-            on_floor: false,
+            collided: false,
         }
     }
 }
