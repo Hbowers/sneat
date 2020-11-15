@@ -5,9 +5,11 @@ use amethyst::{
     renderer::{SpriteRender, SpriteSheet},
 };
 
+
 use crate::components::{Covers, Shape};
 use crate::types::Point;
-const COVER_WIDTH: f32 = 16.;
+const COVER_WIDTH: f32 = 8.;
+const COVER_LAYER: f32 = 0.;
 
 pub fn initialise_covering(
     world: &mut World,
@@ -20,7 +22,7 @@ pub fn initialise_covering(
 
     while index < end_x {
         initialise_cover_tile(world, (index + COVER_WIDTH / 2., y), sprite_sheet_handle.clone());
-        index = index + COVER_WIDTH * 2.;
+        index += COVER_WIDTH;
     }
 }
 
@@ -29,15 +31,15 @@ pub fn initialise_cover_tile(
     point: Point,
     sprite_sheet_handle: Handle<SpriteSheet>,
 ) {
-    let sprite_render = SpriteRender::new(sprite_sheet_handle, 0);
+    let sprite_render = SpriteRender::new(sprite_sheet_handle, 1);
     let mut default_transform = Transform::default();
-    default_transform.set_translation_xyz(point.0, point.1, 0.0);
+    default_transform.set_translation_xyz(point.0, point.1, COVER_LAYER);
 
     world
         .create_entity()
-        .with(Covers::new(16.0, 16.0))
-        .with(Shape::new(16.0, 16.0))
-        .with(default_transform.clone())
-        .with(sprite_render.clone())
+        .with(Covers::new(COVER_WIDTH, 8.0))
+        .with(Shape::new(COVER_WIDTH, 8.0))
+        .with(default_transform)
+        .with(sprite_render)
         .build();
 }

@@ -1,15 +1,23 @@
 use amethyst::{
     assets::Handle,
+    assets::{PrefabData,ProgressCounter},
     core::transform::Transform,
+    derive::PrefabData,
+    ecs::Entity,
+    error::Error,
     prelude::*,
-    renderer::{ SpriteRender, SpriteSheet, },
+    renderer::{SpriteRender, SpriteSheet},
 };
+use serde::{Deserialize, Serialize};
 
 use crate::components::{Shape, Sneatling, Velocity, Collider, Coverable};
 use crate::constants::ARENA_HEIGHT;
 
 const SNEATLING_WIDTH: f32 = 3.0;
 const SNEATLING_HEIGHT: f32 = 2.0;
+
+#[derive(Debug, Deserialize, Serialize, PrefabData)]
+pub struct SneatlingEntity {}
 
 pub fn initialise_sneatling(world: &mut World, sprite_sheet_handle: Handle<SpriteSheet>) {
     let sprite_render = SpriteRender::new(sprite_sheet_handle, 0);
@@ -28,4 +36,3 @@ pub fn initialise_sneatling(world: &mut World, sprite_sheet_handle: Handle<Sprit
         .with(sprite_render)
         .build();
 }
-

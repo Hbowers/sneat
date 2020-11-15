@@ -6,7 +6,6 @@ use amethyst::{
 };
 
 use crate::components::Edible;
-use crate::components::Shape;
 use crate::components::Sneatling;
 use crate::components::SpitTravel;
 use crate::components::Velocity;
@@ -62,11 +61,9 @@ impl<'s> System<'s> for SpittingSystem {
                 if edible.in_stomach && edible.stomach_id == sneatling.stomach_stack {
                     hiddens.remove(entity);
 
-                    println!("Stomach stack: {}", sneatling.stomach_stack);
                     sneatling.stomach_stack -= 1;
 
                     edible.in_stomach = false;
-                    println!("Edible Stomach ID: {}", edible.stomach_id);
                     edible.stomach_id = -1;
 
                     let pos = (sneatling_x, sneatling_y);

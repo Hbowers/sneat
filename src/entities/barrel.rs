@@ -1,7 +1,6 @@
 use amethyst::{
     assets::Handle,
     core::transform::Transform,
-    core::Hidden,
     prelude::*,
     renderer::{SpriteRender, SpriteSheet},
 };
@@ -26,7 +25,7 @@ pub fn initialise_barrel(
         .with(Shape::new(4., 5.))
         .with(Velocity::new())
         .with(Covers::new(4., 5.))
-        .with(default_transform.clone())
+        .with(default_transform)
         .with(sprite_render)
         .build();
 }

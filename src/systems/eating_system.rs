@@ -73,11 +73,9 @@ impl<'s> System<'s> for EatingSystem {
                     sneatling.is_eating = false;
                     sneatling.has_eaten = true;
                     sneatling.stomach_stack += 1;
-                    println!("Sneatling Stomach Stack: {}", sneatling.stomach_stack);
 
                     edible.in_stomach = true;
                     edible.stomach_id = sneatling.stomach_stack;
-                    println!("Edible ID: {}", edible.stomach_id);
 
                     hiddens.insert(entity, Hidden).unwrap();
                     colliders.remove(entity);
