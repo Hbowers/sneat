@@ -1,13 +1,14 @@
-use amethyst::{core::transform::Transform, prelude::*, renderer::Camera};
+use amethyst::{core::transform::Transform, prelude::*, input::{VirtualKeyCode, is_key_down}};
 use serde::{Deserialize, Serialize};
 use std::fs;
 
 use crate::components::{Barrel, Coverable, Covers, Floor, Shape, Sneatling, Velocity};
 use crate::constants::{ARENA_HEIGHT, ARENA_WIDTH};
-use crate::entities::{barrel, cover, floor, sneatling};
+use crate::entities::{barrel, cover, floor, sneatling, camera, camera_focus};
 use crate::resources::assets;
 
 pub struct Sneat;
+pub struct Paused;
 
 #[derive(Serialize, Deserialize)]
 pub enum EntityType {
@@ -18,6 +19,7 @@ pub enum EntityType {
 #[derive(Serialize, Deserialize)]
 pub struct EntityDetail {
     entity_type: EntityType,
+    health: f32,
     x: f32,
     y: f32,
 }
@@ -53,8 +55,6 @@ impl SimpleState for Sneat {
         let barrel_sprite_sheet_handle =
             assets::load_sprite_sheet_by_asset(world, assets::AssetType::Barrel);
 
-        initialise_camera(world);
-
         let level_path = "./src/levels/level_1.ron";
         let s = fs::read_to_string(level_path).expect("Could not find file");
         let level: Level = ron::de::from_str(&s).unwrap();
@@ -67,6 +67,8 @@ impl SimpleState for Sneat {
         world.register::<Covers>();
         world.register::<Coverable>();
 
+        let focus = camera_focus::initialise_camera_focus(world, ARENA_WIDTH * 0.5, ARENA_HEIGHT * 0.5, 1.0);
+        camera::initialise_camera(world, focus, ARENA_WIDTH, ARENA_HEIGHT);
         for floor in level.floors {
             floor::initialise_flooring(
                 world,
@@ -89,7 +91,7 @@ impl SimpleState for Sneat {
         for ent in level.entities {
             match ent.entity_type {
                 EntityType::Sneatling => {
-                    sneatling::initialise_sneatling(world, sneatling_sprite_sheet_handle.clone());
+                    sneatling::initialise_sneatling(world, sneatling_sprite_sheet_handle.clone(), ent.health);
                 }
                 EntityType::Barrel => {
                     barrel::initialise_barrel(
@@ -101,14 +103,5 @@ impl SimpleState for Sneat {
             }
         }
     }
-}
 
-fn initialise_camera(world: &mut World) {
-    let mut transform = Transform::default();
-    transform.set_translation_xyz(ARENA_WIDTH * 0.5, ARENA_HEIGHT * 0.5, 1.0);
-    world
-        .create_entity()
-        .with(Camera::standard_2d(ARENA_WIDTH, ARENA_HEIGHT))
-        .with(transform)
-        .build();
 }

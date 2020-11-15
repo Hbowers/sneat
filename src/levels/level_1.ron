@@ -2,13 +2,27 @@ Level(
     entities: [
     (
         entity_type: Sneatling,
+        health: 20.0,
         x: 23.3,
         y: 23.3
     ),
     (
         entity_type: Barrel,
+        health: 100.0,
+        x: 13.3,
+        y: 70.0
+    ),
+    (
+        entity_type: Barrel,
+        health: 100.0,
         x: 13.3,
         y: 63.3
+    ),
+    (
+        entity_type: Barrel,
+        health: 100.0,
+        x: 13.3,
+        y: 80.0
     ),
     ],
     floors: [
