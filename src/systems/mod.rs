@@ -5,6 +5,7 @@ pub use self::cover_system::CoverSystem;
 pub use self::eating_system::EatingSystem;
 pub use self::spitting_system::SpittingSystem;
 pub use self::spit_travel_system::SpitTravelSystem;
+pub use self::camera_system::CameraSystem;
 
 pub mod sneatling_system;
 pub mod velocity;
@@ -13,3 +14,4 @@ pub mod cover_system;
 pub mod eating_system;
 pub mod spitting_system;
 pub mod spit_travel_system;
+pub mod camera_system;
