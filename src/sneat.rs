@@ -1,14 +1,12 @@
 use amethyst::{
-    assets::{AssetStorage, Handle, Loader},
     core::transform::Transform,
     prelude::*,
-    renderer::{Camera, ImageFormat, SpriteRender, SpriteSheet, SpriteSheetFormat, Texture},
+    renderer::Camera,
 };
 
-use crate::components::{Floor, Shape, Sneatling, Velocity};
+use crate::components::{Floor, Shape, Sneatling, Velocity, Barrel};
 use crate::constants::{ARENA_HEIGHT, ARENA_WIDTH};
-use crate::entities::floor;
-use crate::entities::sneatling;
+use crate::entities::{barrel, floor, sneatling};
 use crate::resources::assets;
 
 pub struct Sneat;
@@ -21,20 +19,18 @@ impl SimpleState for Sneat {
             assets::load_sprite_sheet_by_asset(world, assets::AssetType::Sneatling);
         let environment_sprite_sheet_handle =
             assets::load_sprite_sheet_by_asset(world, assets::AssetType::GroundBlock);
+        let barrel_sprite_sheet_handle =
+            assets::load_sprite_sheet_by_asset(world, assets::AssetType::Barrel);
 
         initialise_camera(world);
         world.register::<Sneatling>();
         world.register::<Velocity>();
+        world.register::<Barrel>();
         world.register::<Floor>();
         world.register::<Shape>();
 
-        floor::initialise_flooring(
-            world,
-            2.,
-            90.,
-            16.,
-            environment_sprite_sheet_handle,
-        );
+        floor::initialise_flooring(world, 2., 90., 16., environment_sprite_sheet_handle);
+        barrel::initialise_barrel(world, (23., 32.), barrel_sprite_sheet_handle);
         sneatling::initialise_sneatling(world, sneatling_sprite_sheet_handle);
     }
 }

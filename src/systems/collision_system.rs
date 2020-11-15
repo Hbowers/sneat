@@ -3,22 +3,22 @@ use amethyst::{
     ecs::{Join, ReadStorage, System, WriteStorage},
 };
 
-use crate::components::{Sneatling, Floor, Shape, Velocity};
+use crate::components::{Collides, Floor, Shape, Velocity};
 
 pub struct CollisionSystem;
 
 impl<'s> System<'s> for CollisionSystem {
     type SystemData = (
         WriteStorage<'s, Velocity>,
-        ReadStorage<'s, Sneatling>,
+        ReadStorage<'s, Collides>,
         ReadStorage<'s, Floor>,
         ReadStorage<'s, Shape>,
         ReadStorage<'s, Transform>,
     );
 
-    fn run(&mut self, (mut velocities, sneatlings, floors, shapes, transforms): Self::SystemData) {
+    fn run(&mut self, (mut velocities, collides, floors, shapes, transforms): Self::SystemData) {
 
-        for (_sneatling, sneatling_shape, sneatling_transform, sneatling_velocity) in (&sneatlings, &shapes, &transforms, &mut velocities).join() {
+        for (_can_collide, sneatling_shape, sneatling_transform, sneatling_velocity) in (&collides, &shapes, &transforms, &mut velocities).join() {
             let sneatling_x = sneatling_transform.translation().x;
             let sneatling_y = sneatling_transform.translation().y;
 
