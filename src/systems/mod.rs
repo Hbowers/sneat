@@ -6,6 +6,7 @@ pub use self::eating_system::EatingSystem;
 pub use self::spitting_system::SpittingSystem;
 pub use self::spit_travel_system::SpitTravelSystem;
 pub use self::camera_system::CameraSystem;
+pub use self::damage_system::DamageSystem;
 
 pub mod sneatling_system;
 pub mod velocity;
@@ -15,3 +16,4 @@ pub mod eating_system;
 pub mod spitting_system;
 pub mod spit_travel_system;
 pub mod camera_system;
+pub mod damage_system;

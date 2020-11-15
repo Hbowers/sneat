@@ -7,7 +7,7 @@ use amethyst::{
 
 use crate::components::{Floor, Shape};
 use crate::types::Point;
-const FLOOR_WIDTH: f32 = 16.;
+const FLOOR_WIDTH: f32 = 8.;
 
 pub fn initialise_flooring(
     world: &mut World,
@@ -20,7 +20,7 @@ pub fn initialise_flooring(
 
     while index < end_x {
         initialise_floor_tile(world, (index + FLOOR_WIDTH / 2., y), sprite_sheet_handle.clone());
-        index = index + FLOOR_WIDTH;
+        index += FLOOR_WIDTH;
     }
 }
 
@@ -35,9 +35,9 @@ pub fn initialise_floor_tile(
 
     world
         .create_entity()
-        .with(Floor::new(16.0, 16.0))
-        .with(Shape::new(16.0, 16.0))
-        .with(default_transform.clone())
-        .with(sprite_render.clone())
+        .with(Floor::new(FLOOR_WIDTH, 8.0))
+        .with(Shape::new(FLOOR_WIDTH, 8.0))
+        .with(default_transform)
+        .with(sprite_render)
         .build();
 }

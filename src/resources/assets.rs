@@ -14,7 +14,7 @@ use amethyst::{
 #[derive(Copy, Clone, Eq, Hash, PartialEq)]
 pub enum AssetType {
     Sneatling,
-    GroundBlock,
+    EnvironmentBlock,
     Barrel,
 }
 
@@ -39,7 +39,7 @@ pub fn load_sprite_sheet_by_asset(world: &mut World, asset: AssetType) -> Handle
             "sprites/Whale/1-Idle/1.png",
             "sprite_configs/sneatling_spritesheet.ron",
         ),
-        AssetType::GroundBlock => (
+        AssetType::EnvironmentBlock => (
             "sprites/environment/tileset.png",
             "sprite_configs/environment_spritesheet.ron",
         ),
