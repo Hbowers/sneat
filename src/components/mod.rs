@@ -6,6 +6,7 @@ pub use self::velocity::Velocity;
 pub use self::covers::Covers;
 pub use self::coverable::Coverable;
 pub use self::collides::Collides;
+pub use self::edible::Edible;
 
 pub mod barrel;
 pub mod floor;
@@ -15,3 +16,4 @@ pub mod velocity;
 pub mod covers;
 pub mod coverable;
 pub mod collides;
+pub mod edible;

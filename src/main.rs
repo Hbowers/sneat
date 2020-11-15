@@ -13,15 +13,15 @@ use amethyst::{
 };
 
 // Game
-pub mod sneat;
 pub mod constants;
+pub mod sneat;
 pub mod types;
 
 // ECS
-pub mod entities;
 pub mod components;
-pub mod systems;
+pub mod entities;
 pub mod resources;
+pub mod systems;
 
 pub use sneat::Sneat;
 
@@ -65,11 +65,7 @@ fn main() -> amethyst::Result<()> {
     let game_data = GameDataBuilder::default()
         .with_bundle(StartingBundle {})?
         .with_bundle(render_bundle)?
-        .with(
-            systems::SneatlingMovementSystem,
-            "sneatling_system",
-            &[],
-        )
+        .with(systems::SneatlingMovementSystem, "sneatling_system", &[])
         .with(
             systems::VelocitySystem,
             "velocity_system",
@@ -85,6 +81,10 @@ fn main() -> amethyst::Result<()> {
             "cover_system",
             &["sneatling_system"],
         );
+        )
+        .with(systems::EatingSystem,
+            "eating_system",
+            &[]);
 
     let assets_dir = app_root.join("assets");
     let mut game = Application::new(assets_dir, Sneat, game_data)?;
