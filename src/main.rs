@@ -76,6 +76,11 @@ fn main() -> amethyst::Result<()> {
             systems::CollisionSystem,
             "collision_system",
             &["velocity_system"],
+        )
+        .with(
+            systems::CoverSystem,
+            "cover_system",
+            &["sneatling_system"],
         );
 
     let assets_dir = app_root.join("assets");

@@ -10,8 +10,8 @@ use crate::components::{
     Sneatling,
     Velocity,
     Floor,
-    Cover,
-    InCover
+    Covers,
+    Coverable,
 };
 use crate::resources::assets;
 
@@ -35,8 +35,8 @@ impl SimpleState for Sneat {
         world.register::<Velocity>();
         world.register::<Floor>();
         world.register::<Shape>();
-        world.register::<Cover>();
-        world.register::<InCover>();
+        world.register::<Covers>();
+        world.register::<Coverable>();
         initialise_floor(world, environment_sprite_sheet_handle.clone());
         initialise_cover(world, environment_sprite_sheet_handle);
         initialise_sneatling(world, sneatling_sprite_sheet_handle);
@@ -64,6 +64,7 @@ fn initialise_sneatling(world: &mut World, sprite_sheet_handle: Handle<SpriteShe
         .with(Sneatling::new())
         .with(Shape::new(SNEATLING_WIDTH, SNEATLING_HEIGHT))
         .with(Velocity::new())
+        .with(Coverable::new())
         .with(default_transform)
         .with(sprite_render)
         .build();
@@ -98,7 +99,7 @@ fn initialise_cover(world: &mut World, sprite_sheet_handle: Handle<SpriteSheet>)
 
     world
         .create_entity()
-        .with(Cover::new())
+        .with(Covers::new())
         .with(Shape::new(16.0, 16.0))
         .with(default_transform.clone())
         .with(sprite_render.clone())

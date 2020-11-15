@@ -2,18 +2,18 @@ use amethyst::{
     ecs::{Component, DenseVecStorage},
 };
 
-pub struct Cover {
+pub struct Covers {
     pub quality: f32
 }
 
-impl Cover {
-    pub fn new() -> Cover {
-        Cover {
+impl Covers {
+    pub fn new() -> Covers {
+        Covers {
             quality: 100.0
         }
     }
 }
 
-impl Component for Cover {
+impl Component for Covers {
     type Storage = DenseVecStorage<Self>;
 }

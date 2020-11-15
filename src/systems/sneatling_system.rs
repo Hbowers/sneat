@@ -10,7 +10,7 @@ pub use crate::components::Velocity;
 #[derive(SystemDesc)]
 pub struct SneatlingMovementSystem;
 
-const SNEATLING_SPEED: f32 = 1.2;
+const SNEATLING_SPEED: f32 = 0.3;
 const SNEATLING_JUMP_HEIGHT: f32 = 0.6;
 
 impl<'s> System<'s> for SneatlingMovementSystem {

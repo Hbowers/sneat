@@ -3,59 +3,59 @@ use amethyst::{
     ecs::{Join, ReadStorage, System, WriteStorage},
 };
 
-use crate::components::{Sneatling, Shape, Cover};
+use crate::components::{Coverable, Shape, Covers};
 
-pub struct CollisionSystem;
+pub struct CoverSystem;
 
-impl<'s> System<'s> for CollisionSystem {
+impl<'s> System<'s> for CoverSystem {
     type SystemData = (
-        ReadStorage<'s, Sneatling>,
-        ReadStorage<'s, Cover>
+        WriteStorage<'s, Coverable>,
+        ReadStorage<'s, Covers>,
         ReadStorage<'s, Shape>,
         ReadStorage<'s, Transform>,
     );
 
-    fn run(&mut self, (sneatlings, covers, shapes, transforms): Self::SystemData) {
+    fn run(&mut self, (mut coverables, covers, shapes, transforms): Self::SystemData) {
 
-        for (_sneatling, sneatling_shape, sneatling_transform) in (&sneatlings, &shapes, &transforms).join() {
-            let sneatling_x = sneatling_transform.translation().x;
-            let sneatling_y = sneatling_transform.translation().y;
+        for (coverable, coverable_shape, coverable_transform) in (&mut coverables, &shapes, &transforms).join() {
+            let mut covered_amount = 0.0;
 
             for (_cover, cover_shape, cover_transform) in (&covers, &shapes, &transforms).join() {
-                let cover_x = cover_transform.translation().x - (cover_shape.width);
-                let cover_y = cover_transform.translation().y - (cover_shape.height);
-
-
+                let overlap = overlap_percentage(
+                    coverable_transform.translation().x - (coverable_shape.width * 0.5),
+                    coverable_transform.translation().x + (coverable_shape.width * 0.5),
+                    coverable_transform.translation().y - (coverable_shape.height * 0.5),
+                    coverable_transform.translation().y + (coverable_shape.height * 0.5),
+                    cover_transform.translation().x - (cover_shape.width * 0.5),
+                    cover_transform.translation().x + (cover_shape.width * 0.5),
+                    cover_transform.translation().y - (cover_shape.height * 0.5),
+                    cover_transform.translation().y + (cover_shape.height * 0.5),
+                );
+                covered_amount += overlap;
             }
 
-            //Determine if a sneatling is currently in collision with a floor entity
-            for (_floor, floor_shape, floor_transform) in (&floors, &shapes, &transforms).join() {
-                let floor_x = floor_transform.translation().x - (floor_shape.width * 0.5);
-                let floor_y = floor_transform.translation().y - (floor_shape.height * 0.5);
-
-                if point_in_rect(
-                    sneatling_x,
-                    sneatling_y,
-                    floor_x - sneatling_shape.width /2.,
-                    floor_y - sneatling_shape.height /2.,
-                    floor_x + floor_shape.width + sneatling_shape.width /2.,
-                    floor_y + floor_shape.height + sneatling_shape.height /2.,
-                ) {
-                    println!("colliding");
-                    has_hit_floor = true;
-                }
-            }
-            if has_hit_floor {
-                sneatling_velocity.on_floor = true;
-            } else {
-                sneatling_velocity.on_floor = false;
-            }
+            coverable.covered_amount = covered_amount;
+            println!("Entity covered amount: {:?}", coverable.covered_amount);
         }
     }
 }
 
-fn overlbp_percentage(xa1: f32, xa2: f32, ya1: f32, ya2: f32, xb1: f32, xb2: f32, yb1: f32, yb2: f32) -> bool {
-    x >= left && x <= right && y >= bottom && y <= top
+fn overlap_percentage(xa1: f32, xa2: f32, ya1: f32, ya2: f32, xb1: f32, xb2: f32, yb1: f32, yb2: f32) -> f32 {
+    // x >= left && x <= right && y >= bottom && y <= top) {
     //TODO: https://stackoverflow.com/questions/9324339/how-much-do-two-rectangles-overlap
+    let naught: f32 = 0.0;
+    let si = naught.max(xa2.min(xb2) - xa1.max(xb1)) * naught.max(ya2.min(yb2) -ya1.max(yb1));
+    let a1 = (xa2 - xa1) * (ya2 - ya1);
+    clamp(0.0, 100.0,(si / (a1 - si)) * 100.0)
+}
 
+fn clamp(min: f32, max: f32, mut value: f32) -> f32 {
+    assert!(min <= max);
+    if value < min {
+        value = min;
+    }
+    if value > max {
+        value = max;
+    }
+    value
 }
