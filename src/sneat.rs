@@ -55,7 +55,7 @@ impl SimpleState for Sneat {
         let barrel_sprite_sheet_handle =
             assets::load_sprite_sheet_by_asset(world, assets::AssetType::Barrel);
 
-        let level_path = "./src/levels/level_1.ron";
+        let level_path = "level_1.ron";
         let s = fs::read_to_string(level_path).expect("Could not find file");
         let level: Level = ron::de::from_str(&s).unwrap();
 
