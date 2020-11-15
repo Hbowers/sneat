@@ -44,7 +44,7 @@ impl<'s> System<'s> for SneatlingMovementSystem {
             };
 
             /* Actions where the sneatling is in the air */
-            if !velocity.on_floor {
+            if !velocity.collided{
                 if let Some(mv_amount) = movement {
                     if mv_amount != 0.0 {
                         let scaled_movement = SNEATLING_AIR_SPEED * mv_amount;
@@ -61,11 +61,11 @@ impl<'s> System<'s> for SneatlingMovementSystem {
                 }
             }
 
-            if velocity.on_floor {
+            if velocity.collided {
                 /* Actions Where the Sneatling is on the floor*/
                 let jump = input.action_is_down("player_1_jump").unwrap_or(false);
                 if jump {
-                    velocity.on_floor = false;
+                    velocity.collided = false;
                     velocity.y = SNEATLING_JUMP_HEIGHT;
                 }
 

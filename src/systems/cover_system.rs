@@ -4,6 +4,7 @@ use amethyst::{
 };
 
 use crate::components::{Coverable, Shape, Covers};
+use crate::helpers::clamp;
 
 pub struct CoverSystem;
 
@@ -52,15 +53,4 @@ fn overlap_percentage(xa1: f32, xa2: f32, ya1: f32, ya2: f32, xb1: f32, xb2: f32
     let si = naught.max(xa2.min(xb2) - xa1.max(xb1)) * naught.max(ya2.min(yb2) -ya1.max(yb1));
     let a1 = (xa2 - xa1) * (ya2 - ya1);
     clamp(0.0, 100.0,(si / (a1 - si)) * 100.0)
-}
-
-fn clamp(min: f32, max: f32, mut value: f32) -> f32 {
-    assert!(min <= max);
-    if value < min {
-        value = min;
-    }
-    if value > max {
-        value = max;
-    }
-    value
 }
