@@ -5,7 +5,7 @@ use amethyst::{
     renderer::{ SpriteRender, SpriteSheet, },
 };
 
-use crate::components::{Shape, Sneatling, Velocity, Collides};
+use crate::components::{Shape, Sneatling, Velocity, Collides, Coverable};
 use crate::constants::ARENA_HEIGHT;
 
 const SNEATLING_WIDTH: f32 = 3.0;
@@ -23,6 +23,7 @@ pub fn initialise_sneatling(world: &mut World, sprite_sheet_handle: Handle<Sprit
         .with(Collides::new())
         .with(Shape::new(SNEATLING_WIDTH, SNEATLING_HEIGHT))
         .with(Velocity::new())
+        .with(Coverable::new())
         .with(default_transform)
         .with(sprite_render)
         .build();

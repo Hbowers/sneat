@@ -22,6 +22,7 @@ impl<'s> System<'s> for CollisionSystem {
             let sneatling_x = sneatling_transform.translation().x;
             let sneatling_y = sneatling_transform.translation().y;
 
+            //Determine if a sneatling is currently in collision with a floor entity
             let mut has_hit_floor = false;
             for (_floor, floor_shape, floor_transform) in (&floors, &shapes, &transforms).join() {
                 let floor_x = floor_transform.translation().x - (floor_shape.width * 0.5);

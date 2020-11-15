@@ -6,7 +6,7 @@ use amethyst::{
     renderer::{SpriteRender, SpriteSheet},
 };
 
-use crate::components::{Barrel, Shape, Velocity, Collides, Edible};
+use crate::components::{Barrel, Shape, Velocity, Collides, Covers, Edible};
 use crate::types::Point;
 
 pub fn initialise_barrel(
@@ -25,6 +25,7 @@ pub fn initialise_barrel(
         .with(Edible::new())
         .with(Shape::new(4., 5.))
         .with(Velocity::new())
+        .with(Covers::new(4., 5.))
         .with(default_transform.clone())
         .with(sprite_render)
         .build();

@@ -76,8 +76,19 @@ fn main() -> amethyst::Result<()> {
             "collision_system",
             &["velocity_system"],
         )
-        .with(systems::EatingSystem, "eating_system", &[])
-        .with(systems::SpittingSystem, "spitting_system", &[])
+        .with(
+            systems::CoverSystem,
+            "cover_system",
+            &["sneatling_system"],
+        )
+        .with(systems::EatingSystem,
+            "eating_system",
+            &[]
+        )
+        .with(systems::SpittingSystem,
+          "spitting_system",
+          &[]
+        )
         .with(systems::SpitTravelSystem, "spit_travel_system", &["spitting_system"]);
 
     let assets_dir = app_root.join("assets");
