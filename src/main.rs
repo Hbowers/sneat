@@ -66,6 +66,7 @@ fn main() -> amethyst::Result<()> {
     let game_data = GameDataBuilder::default()
         .with_bundle(StartingBundle {})?
         .with_bundle(render_bundle)?
+        .with(systems::AnimationSystem, "animation_system", &[])
         .with(systems::SneatlingMovementSystem, "sneatling_system", &[])
         .with(
             systems::VelocitySystem,

@@ -2,7 +2,7 @@ use amethyst::{core::transform::Transform, prelude::*, input::{VirtualKeyCode, i
 use serde::{Deserialize, Serialize};
 use std::fs;
 
-use crate::components::{Barrel, Coverable, Covers, Floor, Shape, Sneatling, Velocity};
+use crate::components::{Barrel, Coverable, Covers, Floor, Shape, Sneatling, Velocity, Animation};
 use crate::constants::{ARENA_HEIGHT, ARENA_WIDTH};
 use crate::entities::{barrel, cover, floor, sneatling, camera, camera_focus};
 use crate::resources::assets;
@@ -63,6 +63,7 @@ impl SimpleState for Sneat {
         world.register::<Velocity>();
         world.register::<Barrel>();
         world.register::<Floor>();
+        world.register::<Animation>();
         world.register::<Shape>();
         world.register::<Covers>();
         world.register::<Coverable>();

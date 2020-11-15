@@ -4,3 +4,12 @@ pub enum Direction {
     Left,
     Right
 }
+
+pub enum SneatlingAnimState {
+    Idle,
+    WalkingLeft,
+    WalkingRight,
+    Eating,
+    Jumping,
+    Spitting,
+}
