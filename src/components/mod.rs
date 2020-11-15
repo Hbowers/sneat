@@ -8,6 +8,7 @@ pub use self::coverable::Coverable;
 pub use self::collider::Collider;
 pub use self::collidee::Collidee;
 pub use self::edible::Edible;
+pub use self::spit_travel::SpitTravel;
 
 pub mod barrel;
 pub mod floor;
@@ -19,3 +20,4 @@ pub mod coverable;
 pub mod collider;
 pub mod collidee;
 pub mod edible;
+pub mod spit_travel;

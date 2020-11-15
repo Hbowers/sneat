@@ -4,7 +4,6 @@ use amethyst::{
 };
 
 use crate::components::{Collider,Collidee, Floor, Shape, Velocity};
-use crate::sneat::world;
 use crate::helpers::point_within_range;
 
 pub struct CollisionSystem;
@@ -17,7 +16,6 @@ impl<'s> System<'s> for CollisionSystem {
         ReadStorage<'s, Floor>,
         ReadStorage<'s, Shape>,
         ReadStorage<'s, Transform>,
-        ReadStorage<'s, World>,
     );
 
     fn run(&mut self, (mut velocities, collides, collidees, floors, shapes, transforms): Self::SystemData) {
@@ -29,9 +27,9 @@ impl<'s> System<'s> for CollisionSystem {
 
             let mut collided = false;
             for (_other_can_collide, other_collider_shape, other_collider_transform) in (&collides, &shapes, &transforms).join() {
-                if _other_can_collide. _can_collide {
+                // if _other_can_collide.can_collide {
 
-                }
+                // }
                 let other_collider_x = other_collider_transform.translation().x - (other_collider_shape.width * 0.5);
                 let other_collider_y = other_collider_transform.translation().y + (other_collider_shape.height * 0.5);
 

@@ -32,7 +32,8 @@ impl SimpleState for Sneat {
         world.register::<Coverable>();
         cover::initialise_covering(world,2., 90., 32., environment_sprite_sheet_handle.clone());
         floor::initialise_flooring(world, 2., 90., 16., environment_sprite_sheet_handle);
-        barrel::initialise_barrel(world, (23., 32.), barrel_sprite_sheet_handle);
+        barrel::initialise_barrel(world, (23., 32.), barrel_sprite_sheet_handle.clone());
+        barrel::initialise_barrel(world, (43., 32.), barrel_sprite_sheet_handle);
         sneatling::initialise_sneatling(world, sneatling_sprite_sheet_handle);
     }
 }

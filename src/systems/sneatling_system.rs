@@ -32,8 +32,19 @@ impl<'s> System<'s> for SneatlingMovementSystem {
                 sneatling.is_eating = true;
             } else {
                 sneatling.is_eating = false;
+                sneatling.has_eaten = false;
             };
-            if !velocity.collided {
+
+            let spit = input.action_is_down("player_1_spit").unwrap_or(false);
+            if spit {
+                sneatling.is_spitting = true;
+            } else {
+                sneatling.is_spitting = false;
+                sneatling.has_spat = false;
+            };
+
+            /* Actions where the sneatling is in the air */
+            if !velocity.collided{
                 if let Some(mv_amount) = movement {
                     if mv_amount != 0.0 {
                         let scaled_movement = SNEATLING_AIR_SPEED * mv_amount;
