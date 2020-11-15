@@ -76,7 +76,14 @@ fn main() -> amethyst::Result<()> {
             "collision_system",
             &["velocity_system"],
         )
-        .with(systems::EatingSystem, "eating_system", &[]);
+        .with(
+            systems::CoverSystem,
+            "cover_system",
+            &["sneatling_system"],
+        )
+        .with(systems::EatingSystem,
+            "eating_system",
+            &[]);
 
     let assets_dir = app_root.join("assets");
     let mut game = Application::new(assets_dir, Sneat, game_data)?;

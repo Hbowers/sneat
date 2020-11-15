@@ -11,7 +11,7 @@ pub use crate::types::Direction;
 #[derive(SystemDesc)]
 pub struct SneatlingMovementSystem;
 
-const SNEATLING_SPEED: f32 = 1.2;
+const SNEATLING_SPEED: f32 = 0.3;
 const SNEATLING_AIR_SPEED: f32 = 0.2;
 const SNEATLING_JUMP_HEIGHT: f32 = 0.6;
 
