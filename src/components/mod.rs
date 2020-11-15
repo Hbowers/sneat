@@ -9,6 +9,8 @@ pub use self::collider::Collider;
 pub use self::collidee::Collidee;
 pub use self::edible::Edible;
 pub use self::spit_travel::SpitTravel;
+pub use self::camera_focus::CameraFocus;
+pub use self::health::Health;
 
 pub mod barrel;
 pub mod floor;
@@ -21,3 +23,5 @@ pub mod collider;
 pub mod collidee;
 pub mod edible;
 pub mod spit_travel;
+pub mod camera_focus;
+pub mod health;

@@ -90,7 +90,9 @@ fn main() -> amethyst::Result<()> {
           "spitting_system",
           &[]
         )
-        .with(systems::SpitTravelSystem, "spit_travel_system", &["spitting_system"]);
+        .with(systems::SpitTravelSystem, "spit_travel_system", &["spitting_system"])
+        .with(systems::CameraSystem, "camera_system", &["sneatling_system"])
+        .with(systems::DamageSystem, "damage_system", &["sneatling_system", "cover_system"]);
 
     let assets_dir = app_root.join("assets");
     let mut game = Application::new(assets_dir, Sneat, game_data)?;
