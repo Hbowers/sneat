@@ -1,0 +1,863 @@
+//
+//  Sprite sheet data for Amethyst Game Engine: https://www.amethyst.rs
+//  This file was created by TexturePacker: https://www.codeandweb.com/texturepacker
+//
+//  $TexturePacker:SmartUpdate:d73aa361d3e9538eb2d97a30a3b5665b:5152c51b1c80a693cb6b45670536bad4:d79b53e718764af1bcf6c9c4eb6e0eea$
+//
+
+#![enable(implicit_some)]
+List((
+    texture_width: 204,
+    texture_height: 1656,
+    sprites: [
+        (
+            // 0: 1-Idle/1.png
+            x: 0,
+            y: 0,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 1: 1-Idle/2.png
+            x: 68,
+            y: 0,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 2: 1-Idle/3.png
+            x: 136,
+            y: 0,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 3: 1-Idle/4.png
+            x: 0,
+            y: 46,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 4: 1-Idle/5.png
+            x: 68,
+            y: 46,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 5: 1-Idle/6.png
+            x: 136,
+            y: 46,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 6: 1-Idle/7.png
+            x: 0,
+            y: 92,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 7: 1-Idle/8.png
+            x: 68,
+            y: 92,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 8: 1-Idle/9.png
+            x: 136,
+            y: 92,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 9: 1-Idle/10.png
+            x: 0,
+            y: 138,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 10: 1-Idle/11.png
+            x: 68,
+            y: 138,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 11: 1-Idle/12.png
+            x: 136,
+            y: 138,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 12: 1-Idle/13.png
+            x: 0,
+            y: 184,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 13: 1-Idle/14.png
+            x: 68,
+            y: 184,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 14: 1-Idle/15.png
+            x: 136,
+            y: 184,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 15: 1-Idle/16.png
+            x: 0,
+            y: 230,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 16: 1-Idle/17.png
+            x: 68,
+            y: 230,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 17: 1-Idle/18.png
+            x: 136,
+            y: 230,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 18: 1-Idle/19.png
+            x: 0,
+            y: 276,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 19: 1-Idle/20.png
+            x: 68,
+            y: 276,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 20: 1-Idle/21.png
+            x: 136,
+            y: 276,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 21: 1-Idle/22.png
+            x: 0,
+            y: 322,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 22: 1-Idle/23.png
+            x: 68,
+            y: 322,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 23: 1-Idle/24.png
+            x: 136,
+            y: 322,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 24: 1-Idle/25.png
+            x: 0,
+            y: 368,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 25: 1-Idle/26.png
+            x: 68,
+            y: 368,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 26: 1-Idle/27.png
+            x: 136,
+            y: 368,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 27: 1-Idle/28.png
+            x: 0,
+            y: 414,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 28: 1-Idle/29.png
+            x: 68,
+            y: 414,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 29: 1-Idle/30.png
+            x: 136,
+            y: 414,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 30: 1-Idle/31.png
+            x: 0,
+            y: 460,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 31: 1-Idle/32.png
+            x: 68,
+            y: 460,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 32: 1-Idle/33.png
+            x: 136,
+            y: 460,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 33: 1-Idle/34.png
+            x: 0,
+            y: 506,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 34: 1-Idle/35.png
+            x: 68,
+            y: 506,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 35: 1-Idle/36.png
+            x: 136,
+            y: 506,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 36: 1-Idle/37.png
+            x: 0,
+            y: 552,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 37: 1-Idle/38.png
+            x: 68,
+            y: 552,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 38: 1-Idle/39.png
+            x: 136,
+            y: 552,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 39: 1-Idle/40.png
+            x: 0,
+            y: 598,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 40: 1-Idle/41.png
+            x: 68,
+            y: 598,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 41: 1-Idle/42.png
+            x: 136,
+            y: 598,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 42: 1-Idle/43.png
+            x: 0,
+            y: 644,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 43: 1-Idle/44.png
+            x: 68,
+            y: 644,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 44: 2-Run/1.png
+            x: 136,
+            y: 644,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 45: 2-Run/2.png
+            x: 0,
+            y: 690,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 46: 2-Run/3.png
+            x: 68,
+            y: 690,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 47: 2-Run/4.png
+            x: 136,
+            y: 690,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 48: 2-Run/5.png
+            x: 0,
+            y: 736,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 49: 2-Run/6.png
+            x: 68,
+            y: 736,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 50: 2-Run/7.png
+            x: 136,
+            y: 736,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 51: 2-Run/8.png
+            x: 0,
+            y: 782,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 52: 2-Run/9.png
+            x: 68,
+            y: 782,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 53: 2-Run/10.png
+            x: 136,
+            y: 782,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 54: 2-Run/11.png
+            x: 0,
+            y: 828,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 55: 2-Run/12.png
+            x: 68,
+            y: 828,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 56: 2-Run/13.png
+            x: 136,
+            y: 828,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 57: 2-Run/14.png
+            x: 0,
+            y: 874,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 58: 3-Jump Anticipation/1.png
+            x: 68,
+            y: 874,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 59: 4-Jump/1.png
+            x: 136,
+            y: 874,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 60: 4-Jump/2.png
+            x: 0,
+            y: 920,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 61: 4-Jump/3.png
+            x: 68,
+            y: 920,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 62: 4-Jump/4.png
+            x: 136,
+            y: 920,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 63: 5-Fall/1.png
+            x: 0,
+            y: 966,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 64: 5-Fall/2.png
+            x: 68,
+            y: 966,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 65: 6-Ground/1.png
+            x: 136,
+            y: 966,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 66: 6-Ground/2.png
+            x: 0,
+            y: 1012,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 67: 6-Ground/3.png
+            x: 68,
+            y: 1012,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 68: 7-Attack/1.png
+            x: 136,
+            y: 1012,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 69: 7-Attack/2.png
+            x: 0,
+            y: 1058,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 70: 7-Attack/3.png
+            x: 68,
+            y: 1058,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 71: 7-Attack/4.png
+            x: 136,
+            y: 1058,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 72: 7-Attack/5.png
+            x: 0,
+            y: 1104,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 73: 7-Attack/6.png
+            x: 68,
+            y: 1104,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 74: 7-Attack/7.png
+            x: 136,
+            y: 1104,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 75: 7-Attack/8.png
+            x: 0,
+            y: 1150,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 76: 7-Attack/9.png
+            x: 68,
+            y: 1150,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 77: 7-Attack/10.png
+            x: 136,
+            y: 1150,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 78: 7-Attack/11.png
+            x: 0,
+            y: 1196,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 79: 8-Swalow (Bomb)/1.png
+            x: 68,
+            y: 1196,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 80: 8-Swalow (Bomb)/2.png
+            x: 136,
+            y: 1196,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 81: 8-Swalow (Bomb)/3.png
+            x: 0,
+            y: 1242,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 82: 8-Swalow (Bomb)/4.png
+            x: 68,
+            y: 1242,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 83: 8-Swalow (Bomb)/5.png
+            x: 136,
+            y: 1242,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 84: 8-Swalow (Bomb)/6.png
+            x: 0,
+            y: 1288,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 85: 8-Swalow (Bomb)/7.png
+            x: 68,
+            y: 1288,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 86: 8-Swalow (Bomb)/8.png
+            x: 136,
+            y: 1288,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 87: 8-Swalow (Bomb)/9.png
+            x: 0,
+            y: 1334,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 88: 8-Swalow (Bomb)/10.png
+            x: 68,
+            y: 1334,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 89: 9-Hit/1.png
+            x: 136,
+            y: 1334,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 90: 9-Hit/2.png
+            x: 0,
+            y: 1380,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 91: 9-Hit/3.png
+            x: 68,
+            y: 1380,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 92: 9-Hit/4.png
+            x: 136,
+            y: 1380,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 93: 9-Hit/5.png
+            x: 0,
+            y: 1426,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 94: 9-Hit/6.png
+            x: 68,
+            y: 1426,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 95: 9-Hit/7.png
+            x: 136,
+            y: 1426,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 96: 10-Dead Hit/1.png
+            x: 0,
+            y: 1472,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 97: 10-Dead Hit/2.png
+            x: 68,
+            y: 1472,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 98: 10-Dead Hit/3.png
+            x: 136,
+            y: 1472,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 99: 10-Dead Hit/4.png
+            x: 0,
+            y: 1518,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 100: 10-Dead Hit/5.png
+            x: 68,
+            y: 1518,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 101: 10-Dead Hit/6.png
+            x: 136,
+            y: 1518,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 102: 11-Dead Ground/1.png
+            x: 0,
+            y: 1564,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 103: 11-Dead Ground/2.png
+            x: 68,
+            y: 1564,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 104: 11-Dead Ground/3.png
+            x: 136,
+            y: 1564,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        ),
+        (
+            // 105: 11-Dead Ground/4.png
+            x: 0,
+            y: 1610,
+            width: 68,
+            height: 46,
+            offsets: (0, 0),
+        )
+    ]
+))
+

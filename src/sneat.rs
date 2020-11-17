@@ -1,72 +1,13 @@
 use amethyst::{core::transform::Transform, prelude::*, input::{VirtualKeyCode, is_key_down}};
 use serde::{Deserialize, Serialize};
 use std::fs;
+use std::path::PathBuf;
+use std::env;
 
 use crate::components::{Barrel, Coverable, Covers, Floor, Shape, Sneatling, Velocity, Animation};
 use crate::constants::{ARENA_HEIGHT, ARENA_WIDTH};
 use crate::entities::{barrel, cover, floor, sneatling, camera, camera_focus};
 use crate::resources::assets;
-
-const s: &str = "
-Level(
-    entities: [
-    (
-        entity_type: Sneatling,
-        health: 20.0,
-        x: 23.3,
-        y: 23.3
-    ),
-    (
-        entity_type: Barrel,
-        health: 100.0,
-        x: 13.3,
-        y: 70.0
-    ),
-    (
-        entity_type: Barrel,
-        health: 100.0,
-        x: 13.3,
-        y: 63.3
-    ),
-    (
-        entity_type: Barrel,
-        health: 100.0,
-        x: 13.3,
-        y: 80.0
-    ),
-    ],
-    floors: [
-    (
-        x_start: 3.0,
-        x_end: 90.0,
-        y: 16.0,
-    ),
-    (
-        x_start: 3.0,
-        x_end: 10.0,
-        y: 24.0,
-    ),
-    (
-        x_start: 80.0,
-        x_end: 90.0,
-        y: 24.0,
-    )
-    ],
-    cover: [
-    (
-        x_start: 12.0,
-        x_end: 30.0,
-        y: 24.0,
-    ),
-    (
-        x_start: 50.0,
-        x_end: 80.0,
-        y: 24.0,
-    ),
-    ]
-)
-
-";
 
 pub struct Sneat;
 pub struct Paused;
@@ -108,6 +49,13 @@ pub struct Level {
 impl SimpleState for Sneat {
     fn on_start(&mut self, data: StateData<'_, GameData<'_, '_>>) {
         let world = data.world;
+        let mut app_root = env::current_exe().expect("Cannot get current path");
+        app_root.pop();
+
+        let level_path = app_root.join("levels").join("level_1.ron");
+        println!("Loading level 1 from: {:?}",level_path);
+        let s = fs::read_to_string(level_path).expect("Could not find file");
+        let level: Level = ron::de::from_str(&s).expect("ITS THIS ERROR");
 
         let sneatling_sprite_sheet_handle =
             assets::load_sprite_sheet_by_asset(world, assets::AssetType::Sneatling);
@@ -116,9 +64,6 @@ impl SimpleState for Sneat {
         let barrel_sprite_sheet_handle =
             assets::load_sprite_sheet_by_asset(world, assets::AssetType::Barrel);
 
-        // let level_path = "level_1.ron";
-        // let s = fs::read_to_string(level_path).expect("Could not find file");
-        let level: Level = ron::de::from_str(&s).unwrap();
 
         world.register::<Sneatling>();
         world.register::<Velocity>();

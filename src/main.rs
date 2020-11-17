@@ -9,8 +9,10 @@ use amethyst::{
         types::DefaultBackend,
         RenderingBundle,
     },
-    utils::application_root_dir,
 };
+use std::env;
+use std::path::PathBuf;
+
 
 // Game
 pub mod constants;
@@ -34,15 +36,16 @@ impl<'a, 'b> SystemBundle<'a, 'b> for StartingBundle {
         world: &mut World,
         builder: &mut DispatcherBuilder<'a, 'b>,
     ) -> Result<(), Error> {
-        let app_root = application_root_dir()?;
+    let mut app_root = env::current_exe().expect("Cannot get current path");
+        app_root.pop();
+
 
         // join keeps it platform agnostic
         let binding_path = app_root.join("config").join("bindings.ron");
+        println!("binding path: {:?}", binding_path);
 
         TransformBundle::default().build(world, builder)?;
 
-        // let input_bundle =
-        // InputBundle::<StringBindings>::new().with_bindings_from_file(binding_path)?;
         builder.add_thread_local(
             InputSystemDesc::<StringBindings>::new(Some(Bindings::load(binding_path)?))
                 .build(world),
@@ -54,8 +57,10 @@ impl<'a, 'b> SystemBundle<'a, 'b> for StartingBundle {
 
 fn main() -> amethyst::Result<()> {
     amethyst::start_logger(Default::default());
-    let app_root = application_root_dir()?;
+        let mut app_root = env::current_exe().expect("Cannot get current path");
+    app_root.pop();
     let display_config_path = app_root.join("config").join("display.ron");
+    println!("display_config_path: {:?}", display_config_path);
 
     let render_bundle = RenderingBundle::<DefaultBackend>::new()
         .with_plugin(
