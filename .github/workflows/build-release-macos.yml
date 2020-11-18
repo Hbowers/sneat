@@ -12,14 +12,14 @@ jobs:
       - shell: bash
         name: Make sure to use vulkan for windows
         run: |
-          sed 's/metal/vulkan/g' Cargo.toml > Cargo.toml
+          sed 's/vulkan/metal/g' Cargo.toml > Cargo.toml
 
       - name: Build the artifacts with cargo
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
           components: rustfmt, clippy
-          target: x86_64-pc-windows-gnu
+          target: x86_64-apple-darwin
           override: true
 
       - name: Cache cargo registry
@@ -54,16 +54,16 @@ jobs:
         with:
           use-cross: true
           command: build 
-          args: --release --target x86_64-pc-windows-gnu
+          args: --release --target x86_64-apple-darwin
       - shell: bash
         name: Move exe to root
         run: |
-          cp target/x86_64-pc-windows-gnu/release/sneat.exe .
+          cp target/x86_64-apple-darwin/release/sneat .
 
       - name: Zip artifacts
         uses: montudor/action-zip@v0.1.0
         with:
-          args: zip sneat_game_windows.zip -qq -r out.zip assets config levels sneat.exe 
+          args: zip sneat_game_windows.zip -qq -r out.zip assets config levels sneat
 
       - name: Upload the artifacts
         uses: skx/github-action-publish-binaries@master
