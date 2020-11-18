@@ -1,0 +1,73 @@
+on:
+  release:
+    types: [created]
+name: Handle Release
+jobs:
+  generate:
+    name: Create release-artifacts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@master
+      - shell: bash
+        name: Make sure to use vulkan for windows
+        run: |
+          sed 's/metal/vulkan/g' Cargo.toml > Cargo.toml
+
+      - name: Build the artifacts with cargo
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          components: rustfmt, clippy
+          target: x86_64-pc-windows-gnu
+          override: true
+
+      - name: Cache cargo registry
+        uses: actions/cache@v1
+        with:
+          path: ~/.cargo/registry
+          key: ${{ runner.os }}-cargo-registry-${{ steps.rust-toolchain.outputs.rustc_hash }}-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-registry-${{ steps.rust-toolchain.outputs.rustc_hash }}-
+            ${{ runner.os }}-cargo-registry
+
+      - name: Cache cargo index
+        uses: actions/cache@v1
+        with:
+          path: ~/.cargo/git
+          key: ${{ runner.os }}-cargo-index-${{ steps.rust-toolchain.outputs.rustc_hash }}-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-index-${{ steps.rust-toolchain.outputs.rustc_hash }}-
+            ${{ runner.os }}-cargo-index
+
+      - name: Cache cargo build
+        uses: actions/cache@v1
+        with:
+          path: target
+          key: ${{ runner.os }}-cargo-build-target-${{ steps.rust-toolchain.outputs.rustc_hash }}-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-build-target-${{ steps.rust-toolchain.outputs.rustc_hash }}-
+            ${{ runner.os }}-cargo-build-target-
+
+      - name: Cargo build
+        uses: actions-rs/cargo@v1
+        with:
+          use-cross: true
+          command: build 
+          args: --release --target x86_64-pc-windows-gnu
+      - shell: bash
+        name: Move exe to root
+        run: |
+          cp target/x86_64-pc-windows-gnu/release/sneat.exe .
+
+      - name: Zip artifacts
+        uses: montudor/action-zip@v0.1.0
+        with:
+          args: zip sneat_game_windows.zip -qq -r out.zip assets config levels sneat.exe 
+
+      - name: Upload the artifacts
+        uses: skx/github-action-publish-binaries@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          args: '*.zip'

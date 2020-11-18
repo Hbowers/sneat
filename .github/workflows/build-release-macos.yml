@@ -9,6 +9,10 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@master
+      - shell: bash
+        name: Make sure to use vulkan for windows
+        run: |
+          sed 's/metal/vulkan/g' Cargo.toml > Cargo.toml
 
       - name: Build the artifacts with cargo
         uses: actions-rs/toolchain@v1
@@ -52,6 +56,7 @@ jobs:
           command: build 
           args: --release --target x86_64-pc-windows-gnu
       - shell: bash
+        name: Move exe to root
         run: |
           cp target/x86_64-pc-windows-gnu/release/sneat.exe .
 
