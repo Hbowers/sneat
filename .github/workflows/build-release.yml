@@ -47,14 +47,14 @@ jobs:
 
       - name: Cargo build
         uses: actions-rs/cargo@v1
-          with:
-            use-cross: true
-            command: build 
-            args: --release --target x86_64-pc-windows-gnu
+        with:
+          use-cross: true
+          command: build 
+          args: --release --target x86_64-pc-windows-gnu
       - name: Zip artifacts
         uses: montudor/action-zip@v0.1.0
-            with:
-              args: zip project/levels project/assets project/config project/sneat*
+        with:
+          args: zip project/levels project/assets project/config project/sneat*
 
       - name: Upload the artifacts
         uses: skx/github-action-publish-binaries@master
