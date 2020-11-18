@@ -54,7 +54,7 @@ jobs:
       - name: Zip artifacts
         uses: montudor/action-zip@v0.1.0
         with:
-          args: zip project/levels project/assets project/config project/sneat*
+          args: zip /project/levels /project/assets /project/config /project/sneat*
 
       - name: Upload the artifacts
         uses: skx/github-action-publish-binaries@master
