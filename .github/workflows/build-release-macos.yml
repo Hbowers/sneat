@@ -5,14 +5,14 @@ name: Release Binary MacOS
 jobs:
   generate:
     name: Create release-artifacts
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - name: Checkout the repository
         uses: actions/checkout@master
       - shell: bash
         name: Make sure to use vulkan for windows
         run: |
-          sed -i 's/vulkan/metal/g' Cargo.toml
+          sed -i '' 's/vulkan/metal/g' Cargo.toml
 
       - name: Build the artifacts with cargo
         uses: actions-rs/toolchain@v1
