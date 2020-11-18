@@ -20,4 +20,4 @@ amethyst = {version = "0.15.3", features = ["vulkan"]}
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
 ron = "*"
-amethyst = {version = "0.15.3", features = ["metal"]}
+# amethyst = {version = "0.15.3", features = ["metal"]}
