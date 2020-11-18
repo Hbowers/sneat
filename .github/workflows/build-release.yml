@@ -19,7 +19,8 @@ jobs:
       - uses: actions-rs/cargo@v1
         with:
           use-cross: true
-          command: build --release --target x86_64-pc-windows-gnu
+          command: build 
+          args: --release --target x86_64-pc-windows-gnu
       - name: Upload the artifacts
         uses: skx/github-action-publish-binaries@master
         env:
