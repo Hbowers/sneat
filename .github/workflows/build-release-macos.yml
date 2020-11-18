@@ -62,8 +62,8 @@ jobs:
 
       - shell: bash
         name: Zip
-        with:
-          args: zip sneat_game_windows.zip -qq -r out.zip assets config levels sneat
+        run: |
+           zip sneat_game_windows.zip -qq -r out.zip assets config levels sneat
 
       - name: Upload the artifacts
         uses: skx/github-action-publish-binaries@master
