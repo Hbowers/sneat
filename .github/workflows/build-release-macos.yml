@@ -12,7 +12,7 @@ jobs:
       - shell: bash
         name: Make sure to use vulkan for windows
         run: |
-          sed 's/vulkan/metal/g' Cargo.toml > Cargo.toml
+          sed -i 's/vulkan/metal/g' Cargo.toml
 
       - name: Build the artifacts with cargo
         uses: actions-rs/toolchain@v1
