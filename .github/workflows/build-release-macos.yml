@@ -63,7 +63,7 @@ jobs:
       - shell: bash
         name: Zip
         run: |
-           zip sneat_game_windows.zip -qq -r out.zip assets config levels sneat
+           zip sneat_game_macos.zip -qq -r out.zip assets config levels sneat
 
       - name: Upload the artifacts for to an artifact
         uses: actions/upload-artifact@v2
