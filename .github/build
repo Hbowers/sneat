@@ -1,0 +1,4 @@
+#!/bin/bash
+cargo build --release;
+sudo apt-get install zip;
+zip sneat_game.zip target/release/assets target/release/levels target/release/config target/release/sneat;
