@@ -50,11 +50,11 @@ jobs:
         with:
           use-cross: true
           command: build 
-          args: --release --target x86_64-pc-windows-gnu
+          args: --release --target x86_64-pc-windows-gnu --target-dir 
       - name: Zip artifacts
         uses: montudor/action-zip@v0.1.0
         with:
-          args: zip /project/levels /project/assets /project/config /project/sneat*
+          args: zip sneat_game_windows.zip /project/levels /project/assets /project/config /project/sneat*
 
       - name: Upload the artifacts
         uses: skx/github-action-publish-binaries@master
