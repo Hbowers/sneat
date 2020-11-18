@@ -58,8 +58,11 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: fmt
+
           args: --all -- --check
 
+      - name: Install alsa
+        run: sudo apt-get install alsa
 
       - name: Build Linux
         id: build
