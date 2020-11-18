@@ -62,7 +62,7 @@ jobs:
           args: --all -- --check
 
       - name: Install alsa
-        run: sudo apt-get install alsa
+        run: sudo apt-get install libasound2-dev libfontconfig1-dev libx11-dev libxcb-composite0-dev libexpat1-dev libfreetype6-dev cmake gcc
 
       - name: Build Linux
         id: build
