@@ -60,8 +60,8 @@ jobs:
         run: |
           cp target/x86_64-apple-darwin/release/sneat .
 
-      - name: Zip artifacts
-        uses: montudor/action-zip@v0.1.0
+      - shell: bash
+        name: Zip
         with:
           args: zip sneat_game_windows.zip -qq -r out.zip assets config levels sneat
 
