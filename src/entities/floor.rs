@@ -19,7 +19,11 @@ pub fn initialise_flooring(
     let mut index = start_x;
 
     while index < end_x {
-        initialise_floor_tile(world, (index + FLOOR_WIDTH / 2., y), sprite_sheet_handle.clone());
+        initialise_floor_tile(
+            world,
+            (index + FLOOR_WIDTH / 2., y),
+            sprite_sheet_handle.clone(),
+        );
         index += FLOOR_WIDTH;
     }
 }

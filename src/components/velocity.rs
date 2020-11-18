@@ -10,7 +10,7 @@ pub struct Velocity {
 }
 
 impl Velocity {
-    pub fn new() -> Velocity{
+    pub fn new() -> Velocity {
         Velocity {
             x: 0.0,
             y: 0.0,

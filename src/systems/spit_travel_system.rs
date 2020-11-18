@@ -2,13 +2,13 @@ use amethyst::{
     core::Hidden,
     core::Transform,
     derive::SystemDesc,
-    ecs::{Entities, Join,  System, SystemData, WriteStorage},
+    ecs::{Entities, Join, System, SystemData, WriteStorage},
 };
 
-use crate::components::Velocity;
-use crate::components::SpitTravel;
-use crate::types::Direction;
 use crate::components::Collider;
+use crate::components::SpitTravel;
+use crate::components::Velocity;
+use crate::types::Direction;
 
 #[derive(SystemDesc)]
 pub struct SpitTravelSystem;
@@ -28,7 +28,9 @@ impl<'s> System<'s> for SpitTravelSystem {
         (entities, mut hiddens,mut velocities, mut transforms, mut spit_travels, mut colliders): Self::SystemData,
     ) {
         let mut to_remove = Vec::new();
-        for (entity, spit_item_transform, spit_travel, mut velocity) in (&entities, &mut transforms, &spit_travels, &mut velocities).join() {
+        for (entity, spit_item_transform, spit_travel, mut velocity) in
+            (&entities, &mut transforms, &spit_travels, &mut velocities).join()
+        {
             to_remove.push(entity);
 
             spit_item_transform.set_translation_x(spit_travel.position.0);

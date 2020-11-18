@@ -5,10 +5,10 @@ use amethyst::{
     ecs::{Entities, Join, ReadStorage, System, SystemData, WriteStorage},
 };
 
+use crate::components::Collider;
 use crate::components::Edible;
 use crate::components::Shape;
 use crate::components::Sneatling;
-use crate::components::Collider;
 use crate::types::Direction;
 
 #[derive(SystemDesc)]
@@ -35,9 +35,9 @@ impl<'s> System<'s> for EatingSystem {
         for (sneatling, sneatling_transform) in (&mut sneatlings, &transforms).join() {
             let sneatling_x = sneatling_transform.translation().x;
             let sneatling_y = sneatling_transform.translation().y;
-                if !sneatling.is_eating || sneatling.has_eaten {
-                    return;
-                };
+            if !sneatling.is_eating || sneatling.has_eaten {
+                return;
+            };
 
             for (entity, edible, edible_shape, edible_transform) in
                 (&*entities, &mut edibles, &shapes, &transforms).join()

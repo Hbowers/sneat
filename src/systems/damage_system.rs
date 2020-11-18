@@ -3,7 +3,7 @@ use amethyst::{
     ecs::{Join, Read, ReadStorage, System, WriteStorage},
 };
 
-use crate::components::{Sneatling, Coverable, Health};
+use crate::components::{Coverable, Health, Sneatling};
 
 pub struct DamageSystem;
 

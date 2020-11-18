@@ -1,14 +1,10 @@
-use amethyst::{
-    ecs::{Component, DenseVecStorage},
-};
+use amethyst::ecs::{Component, DenseVecStorage};
 
-pub struct  CameraFocus {
-}
+pub struct CameraFocus {}
 
 impl CameraFocus {
     pub fn new() -> CameraFocus {
-        CameraFocus {
-        }
+        CameraFocus {}
     }
 }
 

@@ -6,11 +6,8 @@ pub struct Shape {
 }
 
 impl Shape {
-    pub fn new(width: f32, height: f32) -> Shape{
-        Shape {
-            width,
-            height,
-        }
+    pub fn new(width: f32, height: f32) -> Shape {
+        Shape { width, height }
     }
 }
 

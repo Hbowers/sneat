@@ -1,12 +1,10 @@
-use amethyst::{
-    ecs::{Component, DenseVecStorage},
-};
+use amethyst::ecs::{Component, DenseVecStorage};
 
 const MIN_COVERED_AMOUNT: f32 = 80.0;
 
 pub struct Coverable {
     pub covered_amount: f32,
-    pub time_out_of_cover: f32
+    pub time_out_of_cover: f32,
 }
 
 impl Coverable {

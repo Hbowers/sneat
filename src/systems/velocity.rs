@@ -48,10 +48,10 @@ impl<'s> System<'s> for VelocitySystem {
             }
 
             if velocity.collided_x_left {
-               velocity.x = -BOUNCEBACK;
+                velocity.x = -BOUNCEBACK;
             };
             if velocity.collided_x_right {
-               velocity.x = BOUNCEBACK;
+                velocity.x = BOUNCEBACK;
             };
 
             /* Updating transforms from velocities */

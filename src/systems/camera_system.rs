@@ -3,7 +3,7 @@ use amethyst::{
     ecs::{Join, Read, ReadStorage, System, WriteStorage},
 };
 
-use crate::components::{Sneatling, CameraFocus};
+use crate::components::{CameraFocus, Sneatling};
 
 pub struct CameraSystem;
 
@@ -18,7 +18,7 @@ impl<'s> System<'s> for CameraSystem {
         let mut sneatling_x = 0.;
 
         for (_sneatling, transform) in (&sneatlings, &transforms).join() {
-          sneatling_x = transform.translation().x;
+            sneatling_x = transform.translation().x;
         }
 
         for (_focus, transform) in (&focus, &mut transforms).join() {

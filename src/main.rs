@@ -13,12 +13,11 @@ use amethyst::{
 use std::env;
 use std::path::PathBuf;
 
-
 // Game
 pub mod constants;
+pub mod helpers;
 pub mod sneat;
 pub mod types;
-pub mod helpers;
 
 // ECS
 pub mod components;
@@ -36,9 +35,8 @@ impl<'a, 'b> SystemBundle<'a, 'b> for StartingBundle {
         world: &mut World,
         builder: &mut DispatcherBuilder<'a, 'b>,
     ) -> Result<(), Error> {
-    let mut app_root = env::current_exe().expect("Cannot get current path");
+        let mut app_root = env::current_exe().expect("Cannot get current path");
         app_root.pop();
-
 
         // join keeps it platform agnostic
         let binding_path = app_root.join("config").join("bindings.ron");
@@ -57,7 +55,7 @@ impl<'a, 'b> SystemBundle<'a, 'b> for StartingBundle {
 
 fn main() -> amethyst::Result<()> {
     amethyst::start_logger(Default::default());
-        let mut app_root = env::current_exe().expect("Cannot get current path");
+    let mut app_root = env::current_exe().expect("Cannot get current path");
     app_root.pop();
     let display_config_path = app_root.join("config").join("display.ron");
     println!("display_config_path: {:?}", display_config_path);
@@ -72,7 +70,11 @@ fn main() -> amethyst::Result<()> {
         .with_bundle(StartingBundle {})?
         .with_bundle(render_bundle)?
         .with(systems::AnimationSystem, "animation_system", &[])
-        .with(systems::AnimationChangingSystem, "animation_changing_system", &[])
+        .with(
+            systems::AnimationChangingSystem,
+            "animation_changing_system",
+            &[],
+        )
         .with(systems::SneatlingMovementSystem, "sneatling_system", &[])
         .with(
             systems::VelocitySystem,
@@ -84,22 +86,24 @@ fn main() -> amethyst::Result<()> {
             "collision_system",
             &["velocity_system"],
         )
+        .with(systems::CoverSystem, "cover_system", &["sneatling_system"])
+        .with(systems::EatingSystem, "eating_system", &[])
+        .with(systems::SpittingSystem, "spitting_system", &[])
         .with(
-            systems::CoverSystem,
-            "cover_system",
+            systems::SpitTravelSystem,
+            "spit_travel_system",
+            &["spitting_system"],
+        )
+        .with(
+            systems::CameraSystem,
+            "camera_system",
             &["sneatling_system"],
         )
-        .with(systems::EatingSystem,
-            "eating_system",
-            &[]
-        )
-        .with(systems::SpittingSystem,
-          "spitting_system",
-          &[]
-        )
-        .with(systems::SpitTravelSystem, "spit_travel_system", &["spitting_system"])
-        .with(systems::CameraSystem, "camera_system", &["sneatling_system"])
-        .with(systems::DamageSystem, "damage_system", &["sneatling_system", "cover_system"]);
+        .with(
+            systems::DamageSystem,
+            "damage_system",
+            &["sneatling_system", "cover_system"],
+        );
 
     let assets_dir = app_root.join("assets");
     let mut game = Application::new(assets_dir, Sneat, game_data)?;

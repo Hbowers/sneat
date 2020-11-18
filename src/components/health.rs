@@ -1,16 +1,12 @@
-use amethyst::{
-    ecs::{Component, DenseVecStorage},
-};
+use amethyst::ecs::{Component, DenseVecStorage};
 
-pub struct  Health {
-    pub value: f32
+pub struct Health {
+    pub value: f32,
 }
 
 impl Health {
     pub fn new(value: f32) -> Health {
-        Health {
-            value
-        }
+        Health { value }
     }
 }
 

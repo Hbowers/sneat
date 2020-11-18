@@ -1,6 +1,6 @@
 use amethyst::ecs::{Component, DenseVecStorage};
 
-pub struct  Collider {}
+pub struct Collider {}
 
 impl Collider {
     pub fn new() -> Collider {

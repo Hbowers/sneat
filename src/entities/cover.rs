@@ -5,7 +5,6 @@ use amethyst::{
     renderer::{SpriteRender, SpriteSheet},
 };
 
-
 use crate::components::{Covers, Shape};
 use crate::types::Point;
 const COVER_WIDTH: f32 = 8.;
@@ -21,7 +20,11 @@ pub fn initialise_covering(
     let mut index = start_x;
 
     while index < end_x {
-        initialise_cover_tile(world, (index + COVER_WIDTH / 2., y), sprite_sheet_handle.clone());
+        initialise_cover_tile(
+            world,
+            (index + COVER_WIDTH / 2., y),
+            sprite_sheet_handle.clone(),
+        );
         index += COVER_WIDTH;
     }
 }

@@ -1,6 +1,4 @@
-use amethyst::{
-    ecs::{Component, DenseVecStorage},
-};
+use amethyst::ecs::{Component, DenseVecStorage};
 
 pub struct Covers {
     pub quality: f32,
@@ -13,7 +11,7 @@ impl Covers {
         Covers {
             quality: 100.0,
             width,
-            height
+            height,
         }
     }
 }

@@ -35,15 +35,12 @@ impl SpriteSheetTable {
 
 pub fn load_sprite_sheet_by_asset(world: &mut World, asset: AssetType) -> Handle<SpriteSheet> {
     let (path_to_sprite, path_to_sprite_config) = match asset {
-        AssetType::Sneatling => (
-            "sprites/Whale/whale.png",
-            "sprite_configs/whale_config.ron",
-        ),
+        AssetType::Sneatling => ("sprites/Whale/whale.png", "sprite_configs/whale_config.ron"),
         AssetType::EnvironmentBlock => (
             "sprites/environment/tileset.png",
             "sprite_configs/environment_spritesheet.ron",
         ),
-        AssetType::Barrel=> (
+        AssetType::Barrel => (
             "sprites/barrel/Barrel.png",
             "sprite_configs/barrel_spritesheet.ron",
         ),
