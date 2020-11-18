@@ -65,6 +65,25 @@ jobs:
         run: |
            zip sneat_game_windows.zip -qq -r out.zip assets config levels sneat
 
+      - name: Upload the artifacts for to an artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: sneat_game_macos
+          path: sneat_game_macos.zip
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  upload:
+    name: Create release-artifacts
+    needs: generate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download the artifact from generate
+        uses: actions/download-artifact@v2
+        with:
+          name: sneat_game_macos
+
       - name: Upload the artifacts
         uses: skx/github-action-publish-binaries@master
         env:
