@@ -7,17 +7,19 @@ jobs:
     name: Create release-artifacts
     runs-on: ubuntu-latest
     steps:
-      - id: rust-toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: nightly
-          components: rustfmt, clippy
-          override: true
-          target: x86_64-pc-windows-gnu
       - name: Checkout the repository
         uses: actions/checkout@master
-      - name: Generate the artifacts
-        uses: skx/github-action-build@master
+      - name: Build the artifacts with cargo
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          components: rustfmt, clippy
+          target: x86_64-pc-windows-gnu
+          override: true
+      - uses: actions-rs/cargo@v1
+        with:
+          use-cross: true
+          command: build --release --target x86_64-pc-windows-gnu
       - name: Upload the artifacts
         uses: skx/github-action-publish-binaries@master
         env:
