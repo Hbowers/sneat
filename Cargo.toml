@@ -9,15 +9,16 @@ build = "build.rs"
 
 # windows dependencies (this is currently broken on stable and nightly, re-add in future)
 
-[target.x86_64-pc-windows-gnu.dependencies]
-amethyst = {version = "0.15.3", features = ["vulkan"]}
+# [target.x86_64-pc-windows-gnu.dependencies]
+# amethyst = {version = "0.15.3", features = ["vulkan"]}
 
-[target.x86_64-unknown-linux.dependencies]
-amethyst = {version = "0.15.3", features = ["vulkan"]}
+# [target.x86_64-unknown-linux.dependencies]
+# amethyst = {version = "0.15.3", features = ["vulkan"]}
    
 
 # regular dependencies
 [dependencies]
+amethyst = {version = "0.15.3", features = ["vulkan"]}
 serde = { version = "1.0", features = ["derive"] }
 ron = "*"
 # amethyst = {version = "0.15.3", features = ["metal"]}
