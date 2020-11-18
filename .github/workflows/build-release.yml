@@ -54,7 +54,7 @@ jobs:
       - name: Zip artifacts
         uses: montudor/action-zip@v0.1.0
         with:
-          args: zip sneat_game_windows.zip target/x86_64-pc-windows-gnu/release/levels target/x86_64-pc-windows-gnu/release/assets target/x86_64-pc-windows-gnu/release/config target/x86_64-pc-windows-gnu/release/sneat*
+          args: zip sneat_game_windows.zip levels assets config target/x86_64-pc-windows-gnu/release/sneat*
 
       - name: Upload the artifacts
         uses: skx/github-action-publish-binaries@master
