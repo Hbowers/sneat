@@ -6,9 +6,9 @@ on: push
 jobs:
   # Set the job key. The key is displayed as the job name
   # when a job name is not provided
-  super-lint:
+  lintAndBuild:
     # Name the Job
-    name: Lint code base
+    name: Lint code base and build
     # Set the type of machine to run on
     runs-on: ubuntu-latest
 
@@ -51,6 +51,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-cargo-build-target-${{ steps.rust-toolchain.outputs.rustc_hash }}-
             ${{ runner.os }}-cargo-build-target-
+
+      - name: Check rustfmt
+        uses: actions-rs/cargo@v1
+        with:
+          command: fmt
+          args: --all -- --check
+
 
       - name: Build Linux
         id: build
