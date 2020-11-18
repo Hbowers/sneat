@@ -51,10 +51,14 @@ jobs:
           use-cross: true
           command: build 
           args: --release --target x86_64-pc-windows-gnu
+      - shell: bash
+        run: |
+          cp target/x86_64-pc-windows-gnu/release/sneat.exe .
+
       - name: Zip artifacts
         uses: montudor/action-zip@v0.1.0
         with:
-          args: zip sneat_game_windows.zip -qq -r out.zip assets config levels target/x86_64-pc-windows-gnu/release/sneat.exe 
+          args: zip sneat_game_windows.zip -qq -r out.zip assets config levels sneat.exe 
 
       - name: Upload the artifacts
         uses: skx/github-action-publish-binaries@master
