@@ -61,9 +61,34 @@ jobs:
           cp target/x86_64-apple-darwin/release/sneat .
 
       - shell: bash
+        name: Initialize app
+        run: |
+          mkdir -p sneat.app/Contents/MacOS
+
+      - shell: bash
+        name: Move assets to app
+        run: |
+          cp -r assets sneat.app/Contents/MacOS
+
+      - shell: bash
+        name: Move config to app
+        run: |
+          cp -r config sneat.app/Contents/MacOS
+
+      - shell: bash
+        name: Move levels to app
+        run: |
+          cp -r levels sneat.app/Contents/MacOS
+
+      - shell: bash
+        name: Move binary to app
+        run: |
+          cp sneat sneat.app/Contents/MacOS
+
+      - shell: bash
         name: Zip
         run: |
-           zip sneat_game_macos.zip -qq -r out.zip assets config levels sneat
+           zip sneat_game_macos.zip -qq -r sneat.app
 
       - name: Upload the artifacts for to an artifact
         uses: actions/upload-artifact@v2
