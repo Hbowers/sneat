@@ -1,0 +1,191 @@
+//
+//  Sprite sheet data for Amethyst Game Engine: https://www.amethyst.rs
+//  This file was created by TexturePacker: https://www.codeandweb.com/texturepacker
+//
+//  $TexturePacker:SmartUpdate:a79cb697a4caf40978a536cee32e9c73:f0e5df08444e5e39bea5e79aea0d521b:2dbd458e433792caf384214d4cda009e$
+//
+
+#![enable(implicit_some)]
+List((
+    texture_width: 28,
+    texture_height: 560,
+    sprites: [
+        (
+            // 0: sneatling-idle-1.png
+            x: 0,
+            y: 0,
+            width: 26,
+            height: 28,
+            offsets: (-1, 1),
+        ),
+        (
+            // 1: sneatling-idle-2.png
+            x: 0,
+            y: 28,
+            width: 27,
+            height: 27,
+            offsets: (-0.5, 1.5),
+        ),
+        (
+            // 2: sneatling-idle-3.png
+            x: 0,
+            y: 55,
+            width: 28,
+            height: 27,
+            offsets: (0, 1.5),
+        ),
+        (
+            // 3: sneatling-idle-4.png
+            x: 0,
+            y: 82,
+            width: 28,
+            height: 27,
+            offsets: (0, 1.5),
+        ),
+        (
+            // 4: sneatling-idle-5.png
+            x: 0,
+            y: 109,
+            width: 27,
+            height: 28,
+            offsets: (-0.5, 1),
+        ),
+        (
+            // 5: sneatling-idle-6.png
+            x: 0,
+            y: 137,
+            width: 26,
+            height: 28,
+            offsets: (-1, 1),
+        ),
+        (
+            // 6: sneatling-idle-7.png
+            x: 0,
+            y: 165,
+            width: 27,
+            height: 27,
+            offsets: (-0.5, 1.5),
+        ),
+        (
+            // 7: sneatling-idle-8.png
+            x: 0,
+            y: 192,
+            width: 28,
+            height: 27,
+            offsets: (0, 1.5),
+        ),
+        (
+            // 8: sneatling-idle-9.png
+            x: 0,
+            y: 219,
+            width: 28,
+            height: 27,
+            offsets: (0, 1.5),
+        ),
+        (
+            // 9: sneatling-idle-10.png
+            x: 0,
+            y: 246,
+            width: 27,
+            height: 28,
+            offsets: (-0.5, 1),
+        ),
+        (
+            // 10: sneatling-idle-11.png
+            x: 0,
+            y: 274,
+            width: 26,
+            height: 28,
+            offsets: (-1, 1),
+        ),
+        (
+            // 11: sneatling-idle-12.png
+            x: 0,
+            y: 0,
+            width: 26,
+            height: 28,
+            offsets: (-1, 1),
+        ),
+        (
+            // 12: sneatling-running-1.png
+            x: 0,
+            y: 302,
+            width: 27,
+            height: 25,
+            offsets: (-2.5, 2.5),
+        ),
+        (
+            // 13: sneatling-running-2.png
+            x: 0,
+            y: 327,
+            width: 27,
+            height: 26,
+            offsets: (-0.5, 1),
+        ),
+        (
+            // 14: sneatling-running-3.png
+            x: 0,
+            y: 353,
+            width: 26,
+            height: 26,
+            offsets: (3, 3),
+        ),
+        (
+            // 15: sneatling-running-4.png
+            x: 0,
+            y: 379,
+            width: 28,
+            height: 27,
+            offsets: (1, 1.5),
+        ),
+        (
+            // 16: sneatling-running-5.png
+            x: 0,
+            y: 406,
+            width: 28,
+            height: 25,
+            offsets: (-2, 3.5),
+        ),
+        (
+            // 17: sneatling-running-6.png
+            x: 0,
+            y: 431,
+            width: 27,
+            height: 25,
+            offsets: (-2.5, 2.5),
+        ),
+        (
+            // 18: sneatling-running-7.png
+            x: 0,
+            y: 456,
+            width: 27,
+            height: 26,
+            offsets: (-0.5, 1),
+        ),
+        (
+            // 19: sneatling-running-8.png
+            x: 0,
+            y: 482,
+            width: 26,
+            height: 26,
+            offsets: (3, 3),
+        ),
+        (
+            // 20: sneatling-running-9.png
+            x: 0,
+            y: 508,
+            width: 28,
+            height: 27,
+            offsets: (1, 1.5),
+        ),
+        (
+            // 21: sneatling-running-10.png
+            x: 0,
+            y: 535,
+            width: 28,
+            height: 25,
+            offsets: (-2, 3.5),
+        )
+    ]
+))
+
