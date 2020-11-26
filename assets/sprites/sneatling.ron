@@ -2,189 +2,341 @@
 //  Sprite sheet data for Amethyst Game Engine: https://www.amethyst.rs
 //  This file was created by TexturePacker: https://www.codeandweb.com/texturepacker
 //
-//  $TexturePacker:SmartUpdate:a79cb697a4caf40978a536cee32e9c73:f0e5df08444e5e39bea5e79aea0d521b:2dbd458e433792caf384214d4cda009e$
+//  $TexturePacker:SmartUpdate:c4c33fc0b693603bf496e2796bb0b2f9:0e54d106e8eea41f1876304baaac3b96:2dbd458e433792caf384214d4cda009e$
 //
 
 #![enable(implicit_some)]
 List((
-    texture_width: 28,
-    texture_height: 560,
+    texture_width: 640,
+    texture_height: 64,
     sprites: [
         (
-            // 0: sneatling-idle-1.png
+            // 0: 1-Idle/sneatling-idle-1.png
             x: 0,
             y: 0,
-            width: 26,
-            height: 28,
-            offsets: (-1, 1),
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
         ),
         (
-            // 1: sneatling-idle-2.png
-            x: 0,
-            y: 28,
-            width: 27,
-            height: 27,
-            offsets: (-0.5, 1.5),
+            // 1: 1-Idle/sneatling-idle-2.png
+            x: 32,
+            y: 0,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
         ),
         (
-            // 2: sneatling-idle-3.png
-            x: 0,
-            y: 55,
-            width: 28,
-            height: 27,
-            offsets: (0, 1.5),
+            // 2: 1-Idle/sneatling-idle-3.png
+            x: 64,
+            y: 0,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
         ),
         (
-            // 3: sneatling-idle-4.png
-            x: 0,
-            y: 82,
-            width: 28,
-            height: 27,
-            offsets: (0, 1.5),
+            // 3: 1-Idle/sneatling-idle-4.png
+            x: 96,
+            y: 0,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
         ),
         (
-            // 4: sneatling-idle-5.png
-            x: 0,
-            y: 109,
-            width: 27,
-            height: 28,
-            offsets: (-0.5, 1),
+            // 4: 1-Idle/sneatling-idle-5.png
+            x: 128,
+            y: 0,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
         ),
         (
-            // 5: sneatling-idle-6.png
-            x: 0,
-            y: 137,
-            width: 26,
-            height: 28,
-            offsets: (-1, 1),
+            // 5: 1-Idle/sneatling-idle-6.png
+            x: 160,
+            y: 0,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
         ),
         (
-            // 6: sneatling-idle-7.png
-            x: 0,
-            y: 165,
-            width: 27,
-            height: 27,
-            offsets: (-0.5, 1.5),
+            // 6: 1-Idle/sneatling-idle-7.png
+            x: 192,
+            y: 0,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
         ),
         (
-            // 7: sneatling-idle-8.png
-            x: 0,
-            y: 192,
-            width: 28,
-            height: 27,
-            offsets: (0, 1.5),
+            // 7: 1-Idle/sneatling-idle-8.png
+            x: 224,
+            y: 0,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
         ),
         (
-            // 8: sneatling-idle-9.png
-            x: 0,
-            y: 219,
-            width: 28,
-            height: 27,
-            offsets: (0, 1.5),
+            // 8: 1-Idle/sneatling-idle-9.png
+            x: 256,
+            y: 0,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
         ),
         (
-            // 9: sneatling-idle-10.png
-            x: 0,
-            y: 246,
-            width: 27,
-            height: 28,
-            offsets: (-0.5, 1),
+            // 9: 1-Idle/sneatling-idle-10.png
+            x: 288,
+            y: 0,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
         ),
         (
-            // 10: sneatling-idle-11.png
-            x: 0,
-            y: 274,
-            width: 26,
-            height: 28,
-            offsets: (-1, 1),
+            // 10: 1-Idle/sneatling-idle-11.png
+            x: 320,
+            y: 0,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
         ),
         (
-            // 11: sneatling-idle-12.png
+            // 11: 1-Idle/sneatling-idle-12.png
             x: 0,
             y: 0,
-            width: 26,
-            height: 28,
-            offsets: (-1, 1),
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
         ),
         (
-            // 12: sneatling-running-1.png
-            x: 0,
-            y: 302,
-            width: 27,
-            height: 25,
-            offsets: (-2.5, 2.5),
+            // 12: 2-Running/sneatling-running-1.png
+            x: 352,
+            y: 0,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
         ),
         (
-            // 13: sneatling-running-2.png
-            x: 0,
-            y: 327,
-            width: 27,
-            height: 26,
-            offsets: (-0.5, 1),
+            // 13: 2-Running/sneatling-running-2.png
+            x: 384,
+            y: 0,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
         ),
         (
-            // 14: sneatling-running-3.png
-            x: 0,
-            y: 353,
-            width: 26,
-            height: 26,
-            offsets: (3, 3),
+            // 14: 2-Running/sneatling-running-3.png
+            x: 416,
+            y: 0,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
         ),
         (
-            // 15: sneatling-running-4.png
-            x: 0,
-            y: 379,
-            width: 28,
-            height: 27,
-            offsets: (1, 1.5),
+            // 15: 2-Running/sneatling-running-4.png
+            x: 448,
+            y: 0,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
         ),
         (
-            // 16: sneatling-running-5.png
-            x: 0,
-            y: 406,
-            width: 28,
-            height: 25,
-            offsets: (-2, 3.5),
+            // 16: 2-Running/sneatling-running-5.png
+            x: 480,
+            y: 0,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
         ),
         (
-            // 17: sneatling-running-6.png
-            x: 0,
-            y: 431,
-            width: 27,
-            height: 25,
-            offsets: (-2.5, 2.5),
+            // 17: 2-Running/sneatling-running-6.png
+            x: 512,
+            y: 0,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
         ),
         (
-            // 18: sneatling-running-7.png
-            x: 0,
-            y: 456,
-            width: 27,
-            height: 26,
-            offsets: (-0.5, 1),
+            // 18: 2-Running/sneatling-running-7.png
+            x: 544,
+            y: 0,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
         ),
         (
-            // 19: sneatling-running-8.png
-            x: 0,
-            y: 482,
-            width: 26,
-            height: 26,
-            offsets: (3, 3),
+            // 19: 2-Running/sneatling-running-8.png
+            x: 576,
+            y: 0,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
         ),
         (
-            // 20: sneatling-running-9.png
-            x: 0,
-            y: 508,
-            width: 28,
-            height: 27,
-            offsets: (1, 1.5),
+            // 20: 2-Running/sneatling-running-9.png
+            x: 608,
+            y: 0,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
         ),
         (
-            // 21: sneatling-running-10.png
+            // 21: 2-Running/sneatling-running-10.png
             x: 0,
-            y: 535,
-            width: 28,
-            height: 25,
-            offsets: (-2, 3.5),
+            y: 32,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
+        ),
+        (
+            // 22: 3-Eating/sneatling-eating-1.png
+            x: 32,
+            y: 32,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
+        ),
+        (
+            // 23: 3-Eating/sneatling-eating-2.png
+            x: 64,
+            y: 32,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
+        ),
+        (
+            // 24: 3-Eating/sneatling-eating-3.png
+            x: 96,
+            y: 32,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
+        ),
+        (
+            // 25: 3-Eating/sneatling-eating-4.png
+            x: 128,
+            y: 32,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
+        ),
+        (
+            // 26: 3-Eating/sneatling-eating-5.png
+            x: 160,
+            y: 32,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
+        ),
+        (
+            // 27: 3-Eating/sneatling-eating-6.png
+            x: 192,
+            y: 32,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
+        ),
+        (
+            // 28: 3-Eating/sneatling-eating-7.png
+            x: 224,
+            y: 32,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
+        ),
+        (
+            // 29: 4-Spitting/sneatling-spitting-1.png
+            x: 256,
+            y: 32,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
+        ),
+        (
+            // 30: 4-Spitting/sneatling-spitting-2.png
+            x: 288,
+            y: 32,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
+        ),
+        (
+            // 31: 4-Spitting/sneatling-spitting-3.png
+            x: 320,
+            y: 32,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
+        ),
+        (
+            // 32: 4-Spitting/sneatling-spitting-4.png
+            x: 352,
+            y: 32,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
+        ),
+        (
+            // 33: 5-Jumping/sneatling-jumping-1.png
+            x: 384,
+            y: 32,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
+        ),
+        (
+            // 34: 5-Jumping/sneatling-jumping-2.png
+            x: 416,
+            y: 32,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
+        ),
+        (
+            // 35: 5-Jumping/sneatling-jumping-3.png
+            x: 448,
+            y: 32,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
+        ),
+        (
+            // 36: 5-Jumping/sneatling-jumping-4.png
+            x: 480,
+            y: 32,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
+        ),
+        (
+            // 37: 5-Jumping/sneatling-jumping-5.png
+            x: 512,
+            y: 32,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
+        ),
+        (
+            // 38: 5-Jumping/sneatling-jumping-6.png
+            x: 544,
+            y: 32,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
+        ),
+        (
+            // 39: 5-Jumping/sneatling-jumping-7.png
+            x: 576,
+            y: 32,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
+        ),
+        (
+            // 40: 5-Jumping/sneatling-jumping-8.png
+            x: 608,
+            y: 32,
+            width: 32,
+            height: 32,
+            offsets: (0, 0),
         )
     ]
 ))
