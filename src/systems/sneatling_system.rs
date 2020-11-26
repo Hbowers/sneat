@@ -86,6 +86,7 @@ impl<'s> System<'s> for SneatlingMovementSystem {
                         }
                     }
                 }
+                sneatling.sneatling_anim_state = SneatlingAnimState::Jumping;
             }
 
             if velocity.collided_y {
@@ -94,7 +95,6 @@ impl<'s> System<'s> for SneatlingMovementSystem {
                 if jump {
                     velocity.collided_y = false;
                     velocity.y = SNEATLING_JUMP_HEIGHT;
-                    sneatling.sneatling_anim_state = SneatlingAnimState::Jumping;
                 }
 
                 if let Some(mv_amount) = movement {

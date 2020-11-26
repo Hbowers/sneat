@@ -40,6 +40,30 @@ impl<'s> System<'s> for AnimationChangingSystem {
                     };
                     animations.insert(entity, new_animation);
                 }
+                SneatlingAnimState::Eating => {
+                    let new_animation = Animation {
+                        first_sprite_index: 22,
+                        frame_duration: ANIMATION_DURATION,
+                        frames: 7,
+                    };
+                    animations.insert(entity, new_animation);
+                }
+                SneatlingAnimState::Spitting => {
+                    let new_animation = Animation {
+                        first_sprite_index: 29,
+                        frame_duration: ANIMATION_DURATION,
+                        frames: 4,
+                    };
+                    animations.insert(entity, new_animation);
+                }
+                SneatlingAnimState::Jumping => {
+                    let new_animation = Animation {
+                        first_sprite_index: 33,
+                        frame_duration: ANIMATION_DURATION,
+                        frames: 8,
+                    };
+                    animations.insert(entity, new_animation);
+                }
                 _ => {
                     let new_animation = Animation {
                         frames: 10,
