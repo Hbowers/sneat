@@ -26,7 +26,7 @@ impl<'s> System<'s> for AnimationChangingSystem {
             match &sneatling.sneatling_anim_state {
                 SneatlingAnimState::Idle => {
                     let new_animation = Animation {
-                        frames: 44,
+                        frames: 12,
                         frame_duration: ANIMATION_DURATION,
                         first_sprite_index: 0,
                     };
@@ -34,49 +34,41 @@ impl<'s> System<'s> for AnimationChangingSystem {
                 }
                 SneatlingAnimState::WalkingRight => {
                     let new_animation = Animation {
-                        frames: 14,
+                        frames: 10,
                         frame_duration: ANIMATION_DURATION,
-                        first_sprite_index: 45,
-                    };
-                    animations.insert(entity, new_animation);
-                }
-                SneatlingAnimState::WalkingLeft => {
-                    let new_animation = Animation {
-                        frames: 14,
-                        frame_duration: ANIMATION_DURATION,
-                        first_sprite_index: 45,
-                    };
-                    animations.insert(entity, new_animation);
-                }
-                SneatlingAnimState::Jumping => {
-                    let new_animation = Animation {
-                        frames: 4,
-                        frame_duration: ANIMATION_DURATION,
-                        first_sprite_index: 59,
+                        first_sprite_index: 12,
                     };
                     animations.insert(entity, new_animation);
                 }
                 SneatlingAnimState::Eating => {
                     let new_animation = Animation {
-                        frames: 5,
+                        first_sprite_index: 22,
                         frame_duration: ANIMATION_DURATION,
-                        first_sprite_index: 84,
+                        frames: 7,
                     };
                     animations.insert(entity, new_animation);
                 }
                 SneatlingAnimState::Spitting => {
                     let new_animation = Animation {
-                        frames: 3,
+                        first_sprite_index: 29,
                         frame_duration: ANIMATION_DURATION,
-                        first_sprite_index: 79,
+                        frames: 4,
+                    };
+                    animations.insert(entity, new_animation);
+                }
+                SneatlingAnimState::Jumping => {
+                    let new_animation = Animation {
+                        first_sprite_index: 33,
+                        frame_duration: ANIMATION_DURATION,
+                        frames: 8,
                     };
                     animations.insert(entity, new_animation);
                 }
                 _ => {
                     let new_animation = Animation {
-                        frames: 44,
+                        frames: 10,
                         frame_duration: ANIMATION_DURATION,
-                        first_sprite_index: 45,
+                        first_sprite_index: 12,
                     };
                     animations.insert(entity, new_animation);
                 }

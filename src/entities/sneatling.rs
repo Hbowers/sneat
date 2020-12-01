@@ -12,6 +12,7 @@ use crate::constants::ARENA_HEIGHT;
 
 const SNEATLING_WIDTH: f32 = 6.0;
 const SNEATLING_HEIGHT: f32 = 4.0;
+const SNEATLING_SCALE: f32 = 0.2;
 
 pub fn initialise_sneatling(
     world: &mut World,
@@ -28,7 +29,7 @@ pub fn initialise_sneatling(
     let mut default_transform = Transform::default();
     let center = ARENA_HEIGHT / 2.0;
     default_transform.set_translation_xyz(center, center, 0.75);
-    default_transform.set_scale(Vector3::new(0.08, 0.08, 1.));
+    default_transform.set_scale(Vector3::new(SNEATLING_SCALE, SNEATLING_SCALE, 1.));
 
     world
         .create_entity()

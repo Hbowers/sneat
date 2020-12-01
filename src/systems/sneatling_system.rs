@@ -16,6 +16,7 @@ pub struct SneatlingMovementSystem;
 const SNEATLING_SPEED: f32 = 0.3;
 const SNEATLING_AIR_SPEED: f32 = 0.2;
 const SNEATLING_JUMP_HEIGHT: f32 = 0.6;
+const SNEATLING_SCALE: f32= 0.2;
 
 impl<'s> System<'s> for SneatlingMovementSystem {
     type SystemData = (
@@ -67,7 +68,7 @@ impl<'s> System<'s> for SneatlingMovementSystem {
                             velocity.x = new_velocity.min(SNEATLING_SPEED);
 
                             if sneatling.direction == Direction::Left {
-                                transform.set_scale(Vector3::new(-0.08, 0.08, 1.));
+                                transform.set_scale(Vector3::new(SNEATLING_SCALE, SNEATLING_SCALE, 1.));
                             }
 
                             sneatling.direction = Direction::Right;
@@ -77,7 +78,7 @@ impl<'s> System<'s> for SneatlingMovementSystem {
                             velocity.x = new_velocity.max(-SNEATLING_SPEED);
 
                             if sneatling.direction == Direction::Right {
-                                transform.set_scale(Vector3::new(0.08, 0.08, 1.));
+                                transform.set_scale(Vector3::new(-SNEATLING_SCALE, SNEATLING_SCALE, 1.));
                             }
 
                             sneatling.direction = Direction::Left;
@@ -85,6 +86,7 @@ impl<'s> System<'s> for SneatlingMovementSystem {
                         }
                     }
                 }
+                sneatling.sneatling_anim_state = SneatlingAnimState::Jumping;
             }
 
             if velocity.collided_y {
@@ -93,7 +95,6 @@ impl<'s> System<'s> for SneatlingMovementSystem {
                 if jump {
                     velocity.collided_y = false;
                     velocity.y = SNEATLING_JUMP_HEIGHT;
-                    sneatling.sneatling_anim_state = SneatlingAnimState::Jumping;
                 }
 
                 if let Some(mv_amount) = movement {
@@ -104,7 +105,7 @@ impl<'s> System<'s> for SneatlingMovementSystem {
                             velocity.x = new_velocity.min(SNEATLING_SPEED);
 
                             if sneatling.direction == Direction::Left {
-                                transform.set_scale(Vector3::new(-0.08, 0.08, 1.));
+                                transform.set_scale(Vector3::new(SNEATLING_SCALE, SNEATLING_SCALE, 1.));
                             }
                             sneatling.direction = Direction::Right;
                             sneatling.sneatling_anim_state = SneatlingAnimState::WalkingRight;
@@ -113,7 +114,7 @@ impl<'s> System<'s> for SneatlingMovementSystem {
                             velocity.x = new_velocity.max(-SNEATLING_SPEED);
 
                             if sneatling.direction == Direction::Right {
-                                transform.set_scale(Vector3::new(0.08, 0.08, 1.));
+                                transform.set_scale(Vector3::new(-SNEATLING_SCALE, SNEATLING_SCALE, 1.));
                             }
 
                             sneatling.direction = Direction::Left;

@@ -24,11 +24,12 @@ fn main() {
     let config = format!("{}/config", project_root_string);
     let levels = format!("{}/levels", project_root_string);
 
-    println!("cargo:warning=copying assets to build dir {:?}", assets);
-    println!("cargo:warning=copying config to build dir {:?}", config);
-    println!("cargo:warning=copying levels to build dir {:?}", levels);
-
     let build_dir = out_dir_buff.to_str().unwrap();
+
+    println!("cargo:warning=copying assets {:?} to build dir {:?}", assets, build_dir);
+    println!("cargo:warning=copying config {:?} to build dir {:?}", config, build_dir);
+    println!("cargo:warning=copying levels {:?} to build dir {:?}", levels, build_dir);
+
 
     Command::new("cp")
         .args(&["-r", &assets[..], build_dir])
@@ -42,9 +43,4 @@ fn main() {
         .args(&["-r", &levels[..], build_dir])
         .status()
         .unwrap();
-
-    println!("cargo:rerun-if-changed=build.rs");
-    println!("cargo:rerun-if-changed=assets/");
-    println!("cargo:rerun-if-changed=config/");
-    println!("cargo:rerun-if-changed=levels/");
 }
